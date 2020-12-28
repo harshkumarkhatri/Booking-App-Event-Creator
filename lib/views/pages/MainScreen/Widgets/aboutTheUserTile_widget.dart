@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AboutTheUser/aboutTheUser_screen.dart';
+import 'package:get/get.dart';
 
 Widget aboutTheUserTile() {
   return ListTile(
@@ -6,6 +8,7 @@ Widget aboutTheUserTile() {
     onTap: () {
       // Update the state of the app.
       // ...
+      Get.to(AboutTheUser());
     },
   );
 }
