@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/alreadyAUserText_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/loginButton_widget.dart';
-import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/singUpButtonSingUpScreen_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/signUpButtonSingUpScreen_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/singUpWithGoogleButton_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
