@@ -18,8 +18,9 @@ Widget loginButtonLoginScreen(BuildContext context,
           print(value);
           value == "Success"
               ? Get.offAll(MainScreen())
-              : Get.snackbar("Unsuccessful Login",
-                  "Sign in was unsuccessful. Please try again.");
+              : Get.snackbar("Login Error",
+                  "No account exist with these credentials.\nPlease try again later",
+                  snackPosition: SnackPosition.BOTTOM);
         },
       );
       signin(email, password, _formKey) == "Success"
