@@ -4,7 +4,14 @@ import 'package:get/get.dart';
 
 Widget aboutTheUserTile() {
   return ListTile(
-    title: Text('About the User'),
+    tileColor: Colors.black,
+    title: Text(
+      'About the User',
+      style: TextStyle(
+        color: Colors.orange,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
     onTap: () {
       // Update the state of the app.
       // ...
