@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget drawerHeader() {
   return Container(
-    height: 150,
+    height: 80,
     child: DrawerHeader(
       child: Container(
         // decoration: BoxDecoration(color: Colors.orange),
@@ -10,15 +10,15 @@ Widget drawerHeader() {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.black,
-              ),
-            ),
-            Container(
+            // Container(
+            //   height: 60,
+            //   width: 60,
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     color: Colors.black,
+            //   ),
+            // ),
+            Flexible(
               child: Text(
                 "demo@gmail.com",
                 style: TextStyle(
@@ -26,14 +26,15 @@ Widget drawerHeader() {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
+                overflow: TextOverflow.fade,
               ),
             ),
           ],
         ),
       ),
-      decoration: BoxDecoration(
-        color: Colors.pink,
-      ),
+    ),
+    decoration: BoxDecoration(
+      color: Colors.orange,
     ),
   );
 }
