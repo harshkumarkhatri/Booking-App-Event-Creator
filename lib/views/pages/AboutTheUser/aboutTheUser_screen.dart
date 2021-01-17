@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AboutTheUser/Widgets/editYourUserNameText_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AboutTheUser/Widgets/emailText_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AboutTheUser/Widgets/nameText_widget.dart';
 
 class AboutTheUser extends StatefulWidget {
   @override
@@ -34,18 +37,38 @@ class _AboutTheUserState extends State<AboutTheUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("About the User"),
+        iconTheme: IconThemeData(
+          color: Colors.orange,
+        ),
+        backgroundColor: Colors.black.withOpacity(0.9),
+        elevation: 0,
+        title: Text(
+          "About the User",
+          style: TextStyle(
+            color: Colors.orange,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Container(
-        child: Column(
-          children: [
-            Text(user.email ?? "email"),
-
-            // TODO: see if username is present or not.
-            // If not present then type no name found and provide them with an option to add name, phone nummber.
-            Text(user.displayName == "" ? "demo" : user.displayName) ??
-                "No name found"
-          ],
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          color: Colors.orange,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15.0, top: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              emailText_widget(user),
+              SizedBox(height: 25),
+              // TODO: see if username is present or not.
+              // If not present then type no name found and provide them with an option to add name, phone nummber.
+              nameText_widget(user),
+              editYourUserNameText_widget(),
+            ],
+          ),
         ),
       ),
     );
