@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/ActiveEvents/EventDetails_screen/eventDetails_screen.dart';
 import 'package:get/get.dart';
 
-Widget activeListItem_widget(DocumentSnapshot demoThing, int index) {
+Widget activeListItem_widget(
+    DocumentSnapshot demoThing, int index, FieldPath field) {
   return GestureDetector(
     onTap: () {
       Get.to(
         EventDetailsScreen(
-          data: demoThing.data()["${index + 1}"],
+          data: demoThing.data()["${index + 1}_${field.hashCode}"],
         ),
       );
     },
@@ -33,7 +34,8 @@ Widget activeListItem_widget(DocumentSnapshot demoThing, int index) {
               padding: const EdgeInsets.only(left: 16.0, top: 6, bottom: 2),
               child: Container(
                 child: Text(
-                  demoThing.data()["${index + 1}"]["eventName"],
+                  demoThing.data()["${index + 1}_${field.hashCode}"]
+                      ["eventName"],
                   style: TextStyle(
                     color: Colors.orange,
                     fontSize: 22,
@@ -54,9 +56,11 @@ Widget activeListItem_widget(DocumentSnapshot demoThing, int index) {
                   Icon(Icons.location_on, color: Colors.orange),
                   Container(
                     child: Text(
-                      demoThing.data()["${index + 1}"]["eventCity"] +
+                      demoThing.data()["${index + 1}_${field.hashCode}"]
+                              ["eventCity"] +
                           ", " +
-                          demoThing.data()["${index + 1}"]["eventState"],
+                          demoThing.data()["${index + 1}_${field.hashCode}"]
+                              ["eventState"],
                       style: TextStyle(
                         color: Colors.orange,
                         fontSize: 16,
@@ -66,7 +70,7 @@ Widget activeListItem_widget(DocumentSnapshot demoThing, int index) {
                   ),
                   Spacer(),
                   Text(
-                    demoThing.data()["${index + 1}"]["date"],
+                    demoThing.data()["${index + 1}_${field.hashCode}"]["date"],
                     style: TextStyle(
                       color: Colors.orange,
                       fontSize: 16,
