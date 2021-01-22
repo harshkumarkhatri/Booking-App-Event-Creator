@@ -17,6 +17,7 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
   DocumentSnapshot demoThing;
   bool noEventFound = false;
   bool noActiveEventFound = false;
+  FieldPath field;
 
   @override
   void initState() {
@@ -29,12 +30,13 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
     CollectionReference users = Firestore.instance.collection("eventList");
 
     final FlutterSecureStorage storage = FlutterSecureStorage();
-    String uid = await storage.read(key: "uid");
+    String email = await storage.read(key: "email");
     final demo =
-        await Firestore.instance.collection("eventList").document(uid).get();
+        await Firestore.instance.collection("eventList").document(email).get();
 
     print("Demothing");
     // print(demoThing.data().keys);
+    field = FieldPath.fromString(email);
     setState(() {
       itemLength = demo.data().keys.length;
       demoThing = demo;
@@ -43,11 +45,12 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
 
     if (demoThing != null) {
       if (demoThing.data() == null) {
-        users.document(uid).set({});
+        users.document(email).set({});
       } else {
         for (int i = 1; i <= demoThing.data().keys.length; i++) {
           print(i);
-          if (demoThing.data()["$i"]["eventStatus"] == "active") {
+          if (demoThing.data()['${i}_${field.hashCode}']["eventStatus"] ==
+              "active") {
             setState(() {
               noActiveEventFound = false;
             });
@@ -92,9 +95,10 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
                   child: ListView.builder(
                     itemCount: itemLength,
                     itemBuilder: (context, index) {
-                      if (demoThing.data()["${index + 1}"]["eventStatus"] ==
+                      if (demoThing.data()["${index + 1}_${field.hashCode}"]
+                              ["eventStatus"] ==
                           "active")
-                        return activeListItem_widget(demoThing, index);
+                        return activeListItem_widget(demoThing, index, field);
                       else {
                         // This will display a empty container the condition fails to succeed
                         return Container();
