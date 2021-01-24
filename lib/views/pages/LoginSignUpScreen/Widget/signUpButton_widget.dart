@@ -12,16 +12,15 @@ Widget signupButton(context) {
       child: Container(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        // color: Colors.yellow,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              Colors.yellow[400],
-              Colors.yellow,
-              Colors.yellow[600],
+              Colors.orange[400],
+              Colors.orange,
+              Colors.orange[600],
             ],
           ),
         ),
@@ -29,7 +28,7 @@ Widget signupButton(context) {
           child: Text(
             "Sign Up",
             style: TextStyle(
-              color: Colors.blue,
+              color: Colors.black,
               fontSize: 24,
               fontWeight: FontWeight.w600,
               letterSpacing: 1.2,

@@ -19,9 +19,9 @@ Widget loginButton(context) {
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              Colors.yellow[400],
-              Colors.yellow,
-              Colors.yellow[600],
+              Colors.orange[400],
+              Colors.orange,
+              Colors.orange[600],
             ],
           ),
         ),
@@ -29,7 +29,7 @@ Widget loginButton(context) {
           child: Text(
             "Login",
             style: TextStyle(
-              color: Colors.blue,
+              color: Colors.black,
               fontSize: 24,
               fontWeight: FontWeight.w600,
               letterSpacing: 1.2,
