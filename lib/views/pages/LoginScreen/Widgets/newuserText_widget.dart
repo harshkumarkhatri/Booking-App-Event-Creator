@@ -6,7 +6,7 @@ Widget newUserText() {
       child: Text(
         "New User?",
         style: TextStyle(
-          color: Colors.yellow,
+          color: Colors.orange,
         ),
       ),
     ),
