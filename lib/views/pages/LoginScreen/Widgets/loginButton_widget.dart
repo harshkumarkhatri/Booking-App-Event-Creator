@@ -18,8 +18,7 @@ Widget loginButtonLoginScreen(BuildContext context,
           print(value);
           value == "Success"
               ? Get.offAll(MainScreen())
-              : Get.snackbar("Login Error",
-                  "No account exist with these credentials.\nPlease try again later",
+              : Get.snackbar("Login Error", "Please try again later",
                   snackPosition: SnackPosition.BOTTOM);
         },
       );
@@ -38,9 +37,9 @@ Widget loginButtonLoginScreen(BuildContext context,
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              Colors.yellow[400],
-              Colors.yellow,
-              Colors.yellow[600],
+              Colors.orange[400],
+              Colors.orange,
+              Colors.orange[600],
             ],
           ),
         ),
@@ -51,7 +50,7 @@ Widget loginButtonLoginScreen(BuildContext context,
               fontSize: 32,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.6,
-              color: Colors.red,
+              color: Colors.black,
             ),
           ),
         ),

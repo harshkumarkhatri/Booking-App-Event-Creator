@@ -8,18 +8,16 @@ Widget backgroundContainers(context) {
       children: [
         Container(
           alignment: Alignment.bottomCenter,
-          color: Colors.red,
+          color: Colors.orange,
           height: 225,
           child: Container(
             height: 65,
             width: 65,
-            // color: Colors.yellow,
           ),
         ),
         Expanded(
           child: Container(
-            color: Colors.blue,
-            // height: (2 * MediaQuery.of(context).size.height) / 3,
+            color: Colors.black,
           ),
         ),
       ],

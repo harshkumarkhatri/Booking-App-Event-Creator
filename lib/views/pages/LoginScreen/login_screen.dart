@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.red,
+        color: Colors.black,
         child: SafeArea(
           child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15.0),
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Text(
                                 "Login",
                                 style: TextStyle(
-                                  color: Colors.yellow,
+                                  color: Colors.orange,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 1.6,
                                   fontSize: 40,
@@ -53,12 +53,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 25.0),
                             child: TextFormField(
-                              style: TextStyle(color: Colors.yellow),
+                              style: TextStyle(color: Colors.orange),
                               decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.orange),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.orange),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.orange),
+                                ),
                                 labelText: "Email",
-                                labelStyle: TextStyle(color: Colors.black),
+                                labelStyle: TextStyle(color: Colors.orange),
                                 errorStyle: TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                                    color: Colors.orange, fontSize: 16),
                               ),
                               onChanged: (value) {
                                 setState(() {
@@ -84,10 +93,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: TextFormField(
                               obscureText: true,
                               decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.orange),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.orange),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.orange),
+                                ),
                                 labelText: "Password",
-                                labelStyle: TextStyle(color: Colors.black),
+                                labelStyle: TextStyle(color: Colors.orange),
                                 errorStyle: TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                                    color: Colors.orange, fontSize: 16),
                               ),
                               onChanged: (value) {
                                 setState(() {
