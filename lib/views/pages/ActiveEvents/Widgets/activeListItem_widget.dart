@@ -54,13 +54,15 @@ Widget activeListItem_widget(
               child: Row(
                 children: [
                   Icon(Icons.location_on, color: Colors.orange),
-                  Container(
+                  Flexible(
                     child: Text(
                       demoThing.data()["${index + 1}_${field.hashCode}"]
                               ["eventCity"] +
                           ", " +
                           demoThing.data()["${index + 1}_${field.hashCode}"]
                               ["eventState"],
+                      maxLines: 9,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.orange,
                         fontSize: 16,
@@ -69,12 +71,17 @@ Widget activeListItem_widget(
                     ),
                   ),
                   Spacer(),
-                  Text(
-                    demoThing.data()["${index + 1}_${field.hashCode}"]["date"],
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                  Flexible(
+                    child: Text(
+                      demoThing.data()["${index + 1}_${field.hashCode}"]
+                          ["date"],
+                      style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      maxLines: 9,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
