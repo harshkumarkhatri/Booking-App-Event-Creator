@@ -29,59 +29,63 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         ),
       ),
       body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: Colors.orange,
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(
-            left: 15,
-            right: 15.0,
-            top: 8,
-          ),
-          child: Column(
-            children: [
-              itemTextEventDetails_widget(
-                "User Name",
-                widget.data['fullUserName'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Contact Email",
-                widget.data['contactEmail'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Phone Number",
-                widget.data['phoneNumber'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Location",
-                widget.data['eventState'] + ", " + widget.data['eventCity'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Event Type",
-                widget.data['eventType'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Expected Audience",
-                widget.data['expectedAudience'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Timing",
-                widget.data['time'],
-              ),
-              dividerEventDetail(),
-              itemTextEventDetails_widget(
-                "Date (yyyy-mm-dd)",
-                widget.data['date'],
-              ),
-              dividerEventDetail(),
-              editEventText_widget(),
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 15,
+              right: 15.0,
+              top: 8,
+            ),
+            child: Column(
+              children: [
+                itemTextEventDetails_widget(
+                  "User Name",
+                  widget.data['fullUserName'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Contact Email",
+                  widget.data['contactEmail'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Phone Number",
+                  widget.data['phoneNumber'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Location",
+                  widget.data['eventState'] + ", " + widget.data['eventCity'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Event Type",
+                  widget.data['eventType'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Expected Audience",
+                  widget.data['expectedAudience'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Timing",
+                  widget.data['time'],
+                ),
+                dividerEventDetail(),
+                itemTextEventDetails_widget(
+                  "Date (yyyy-mm-dd)",
+                  widget.data['date'],
+                ),
+                dividerEventDetail(),
+                editEventText_widget(),
+              ],
+            ),
           ),
         ),
       ),
