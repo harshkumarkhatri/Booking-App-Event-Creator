@@ -1,8 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_booking_app_event_creator/repositories/numericCheck.dart';
 import 'package:flutter_booking_app_event_creator/responses/addDataToFireStore.dart';
 import 'package:flutter_booking_app_event_creator/utils/constants.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Widgets/chooseText_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Widgets/linkAreNotEditableText_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Widgets/textForField_inputDecoration.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 
 class AddEvents extends StatefulWidget {
   @override
@@ -23,15 +28,19 @@ class _AddEventsState extends State<AddEvents> {
       fullUserName,
       contactEmail,
       phoneNumber,
-      eventState,
+      eventState = 'Andhra Pradesh',
       eventCity,
-      eventType,
+      eventType = 'Speaker Session',
       expectedAudience,
       date = "No Date Selected",
-      time = "No Time Selected";
-  SharedPreferences prefs;
+      time = "No Time Selected",
+      loginEmail,
+      eventURL;
 
   String dropdownValue = 'Andhra Pradesh';
+  String dropdownValue2 = 'Speaker Session';
+
+  bool valuefirst = false;
 
   @override
   void initState() {
@@ -40,8 +49,8 @@ class _AddEventsState extends State<AddEvents> {
   }
 
   void init() async {
-    prefs = await SharedPreferences.getInstance();
-    uid = prefs.getString("uid");
+    final FlutterSecureStorage storage = FlutterSecureStorage();
+    uid = await storage.read(key: "uid");
     firestoreInstance
         .collection("eventList")
         .document(uid)
@@ -53,15 +62,20 @@ class _AddEventsState extends State<AddEvents> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text("Add Event", style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.orange),
+        title: Text(
+          "Add Event",
+          style: TextStyle(
+            color: Colors.orange,
+          ),
+        ),
         centerTitle: true,
-        actions: [
-          // TODO:ADD 3 dots here.
-        ],
       ),
       body: Container(
+        decoration: BoxDecoration(color: Colors.orange),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -71,20 +85,9 @@ class _AddEventsState extends State<AddEvents> {
                 children: [
                   TextFormField(
                     style: TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      labelText: "Event Name",
-                      labelStyle: TextStyle(color: Colors.red),
-                      errorStyle: TextStyle(color: Colors.black, fontSize: 16),
-                    ),
+                    cursorColor: Colors.black,
+                    decoration:
+                        textFormField_inputDecoration("Event Name", null),
                     onChanged: (value) {
                       setState(() {
                         // email = value;
@@ -104,21 +107,10 @@ class _AddEventsState extends State<AddEvents> {
                     },
                   ),
                   TextFormField(
+                    cursorColor: Colors.black,
                     style: TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      labelText: "Organizer's Full Name",
-                      labelStyle: TextStyle(color: Colors.red),
-                      errorStyle: TextStyle(color: Colors.black, fontSize: 16),
-                    ),
+                    decoration: textFormField_inputDecoration(
+                        "Organizer's Full Name", null),
                     onChanged: (value) {
                       setState(() {
                         // email = value;
@@ -127,77 +119,103 @@ class _AddEventsState extends State<AddEvents> {
                       });
                     },
                     validator: (value) {
-                      // bool emailValid = RegExp(
-                      //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                      //     .hasMatch(value);
-                      // print(emailValid);
-                      if (value.isEmpty || value.length < 4) {
-                        return 'Full name cannot be less than 4 characters.';
+                      final validCharacters = RegExp(r'^[a-zA-Z ]*$');
+                      if (validCharacters.hasMatch(value)) {
+                        if (value.isEmpty || value.length < 4) {
+                          return 'Full name cannot be less than 4 characters.';
+                        }
+                      } else {
+                        return "Organizer's name cannot contain  numberic values or special characters.";
                       }
                       return null;
                     },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: TextFormField(
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
+                  this.valuefirst == true
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide()),
+                            ),
+                            child: Text(
+                              contactEmail,
+                              style: TextStyle(
+                                fontSize: 16,
+                                // fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            enabled: !this.valuefirst,
+                            cursorColor: Colors.black,
+                            style: TextStyle(color: Colors.black),
+                            decoration: textFormField_inputDecoration(
+                                "Contact Email", null),
+                            onChanged: (value) {
+                              print(value.indexOf("@"));
+                              setState(() {
+                                // email = value;
+                                contactEmail = value;
+                                print(value);
+                              });
+                            },
+                            validator: (value) {
+                              bool emailValid = RegExp(
+                                      r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                                  .hasMatch(value);
+                              // print(emailValid);
+                              if (!this.valuefirst) if (value.isEmpty ||
+                                  value.length < 4 ||
+                                  !emailValid) {
+                                return 'Not a valid email id.';
+                              }
+                              return null;
+                            },
+                          ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
+                  Row(
+                    children: [
+                      Container(
+                        child: Text(
+                          "Same as account email",
                         ),
-                        border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        labelText: "Contact Email",
-                        labelStyle: TextStyle(color: Colors.red),
-                        errorStyle:
-                            TextStyle(color: Colors.black, fontSize: 16),
                       ),
-                      onChanged: (value) {
-                        setState(() {
-                          // email = value;
-                          contactEmail = value;
+                      Checkbox(
+                        checkColor: Colors.greenAccent,
+                        activeColor: Colors.red,
+                        value: this.valuefirst,
+                        onChanged: (bool value) async {
                           print(value);
-                        });
-                      },
-                      validator: (value) {
-                        bool emailValid = RegExp(
-                                r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                            .hasMatch(value);
-                        // print(emailValid);
-                        if (value.isEmpty || value.length < 4 || !emailValid) {
-                          return 'Not a valid email id.';
-                        }
-                        return null;
-                      },
-                    ),
+                          FlutterSecureStorage storage = FlutterSecureStorage();
+                          String email = await storage.read(key: "email");
+
+                          setState(() {
+                            if (value == true) {
+                              print("value is true $email");
+                              contactEmail = email;
+                            }
+
+                            this.valuefirst = value;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
+                    padding: const EdgeInsets.only(top: 0.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.phone,
                       style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        helperText:
-                            "Number won't be shown to people registring for the event.",
-                        // hintText:
-                        //     "Number won't be shown to people registring for the event.",
-                        labelText: "Phone number (with country code)",
-                        labelStyle: TextStyle(color: Colors.red),
-                        errorStyle:
-                            TextStyle(color: Colors.black, fontSize: 16),
-                      ),
+                      cursorColor: Colors.black,
+                      decoration: textFormField_inputDecoration(
+                          "Phone number (with country code)",
+                          "Numbers won't be shown to people registering for the event"),
                       onChanged: (value) {
                         setState(() {
                           // email = value;
@@ -217,70 +235,48 @@ class _AddEventsState extends State<AddEvents> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(top: 6),
-                      child: Text(
-                        "Chosse state",
-                        style: TextStyle(
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                  ),
+                  chooseText("Chosse state"),
                   Padding(
                     padding: const EdgeInsets.only(top: 0.0),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      child: DropdownButton<String>(
-                        value: dropdownValue,
-                        icon: Icon(Icons.arrow_downward, color: Colors.red),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: TextStyle(color: Colors.red),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.red,
+                      child: Theme(
+                        data: ThemeData(canvasColor: Colors.orange),
+                        child: DropdownButton<String>(
+                          focusColor: Colors.red,
+                          value: dropdownValue,
+                          icon: Icon(Icons.arrow_downward, color: Colors.black),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.black,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropdownValue = newValue;
+                              eventState = newValue;
+                            });
+                          },
+                          items: Constants.stateList
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
                         ),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue = newValue;
-                            eventState = newValue;
-                          });
-                        },
-                        items: Constants.stateList
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
                     child: TextFormField(
+                      cursorColor: Colors.black,
                       style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        // hintText:
-                        //     "Number won't be shown to people registring for the event.",
-                        labelText: "Event City",
-                        labelStyle: TextStyle(color: Colors.red),
-                        errorStyle:
-                            TextStyle(color: Colors.black, fontSize: 16),
-                      ),
+                      decoration:
+                          textFormField_inputDecoration("Event City", null),
                       onChanged: (value) {
                         setState(() {
                           // email = value;
@@ -296,107 +292,99 @@ class _AddEventsState extends State<AddEvents> {
                       },
                     ),
                   ),
-
-                  // TODO: Convert this to match the event type option on bookmy show website
+                  chooseText("Choose Event Type"),
                   Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: TextFormField(
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
+                    padding: const EdgeInsets.only(top: 0.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Theme(
+                        data: ThemeData(canvasColor: Colors.orange),
+                        child: DropdownButton<String>(
+                          focusColor: Colors.black,
+                          value: dropdownValue2,
+                          icon: Icon(Icons.arrow_downward, color: Colors.black),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.black,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropdownValue2 = newValue;
+                              eventType = newValue;
+                            });
+                          },
+                          items: Constants.eventTypes
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        // helperText:
-                        //     "Number won't be shown to people registring for the event.",
-                        // hintText:
-                        //     "Number won't be shown to people registring for the event.",
-                        labelText: "Event Type",
-                        labelStyle: TextStyle(color: Colors.red),
-                        errorStyle:
-                            TextStyle(color: Colors.black, fontSize: 16),
                       ),
-                      onChanged: (value) {
-                        setState(() {
-                          // email = value;
-                          eventType = value;
-                          // print(value);
-                        });
-                      },
-                      validator: (value) {
-                        // bool emailValid = RegExp(
-                        //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                        //     .hasMatch(value);
-                        // // print(emailValid);
-                        // if (value.isEmpty || value.length < 4 || !emailValid) {
-                        //   return 'Please enter some text';
-                        // }
-                        return null;
-                      },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      cursorColor: Colors.black,
                       style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                        // helperText:
-                        //     "Number won't be shown to people registring for the event.",
-                        // hintText:
-                        //     "Number won't be shown to people registring for the event.",
-                        labelText: "Expected audience",
-                        labelStyle: TextStyle(color: Colors.red),
-                        errorStyle:
-                            TextStyle(color: Colors.black, fontSize: 16),
-                      ),
+                      decoration: textFormField_inputDecoration(
+                          "Expected audience", null),
                       onChanged: (value) {
                         print(value.runtimeType);
                         setState(() {
-                          // email = value;
                           expectedAudience = value;
                           print(value);
                         });
                       },
                       validator: (value) {
-                        // if (value.isEmpty) {
-                        //   return 'Please enter expected audience';
-                        // }
-                        // return null;
-
-                        // String patttern = r'([0-9])';
-                        // RegExp regExp = new RegExp(patttern);
-                        // if (value.length == 0) {
-                        //   return 'Please enter mobile number';
-                        // } else if (!regExp.hasMatch(value)) {
-                        //   return 'Please enter valid mobile number';
-                        // }
-                        // return null;
-                        if (_isNumeric(value) == true) {
+                        print("Inside ected audience validator");
+                        if (isNumeric(value) == true) {
                           return null;
                         } else {
-                          return 'Please wnter a valid number';
+                          return 'Please enter a valid number';
                         }
                       },
                     ),
                   ),
-
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.url,
+                      cursorColor: Colors.black,
+                      style: TextStyle(color: Colors.black),
+                      decoration:
+                          textFormField_inputDecoration("Event Link", null),
+                      onChanged: (value) {
+                        setState(() {
+                          eventURL = value;
+                          print(value);
+                        });
+                      },
+                      validator: (value) {
+                        if (value.length > 7) {
+                          if (value.substring(0, 8) == "https://" ||
+                              value.substring(0, 7) == "http://") {
+                            return null;
+                          } else {
+                            return 'Please enter a valid url';
+                          }
+                        } else {
+                          return 'Event link cannot be less than 7 characters';
+                        }
+                      },
+                    ),
+                  ),
+                  linkAreNotEditablet_widget(),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
                     child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
                       onTap: () {
                         _selectDate(context);
                       },
@@ -408,21 +396,24 @@ class _AddEventsState extends State<AddEvents> {
                             Text(
                               date,
                               style: TextStyle(
-                                color: Colors.red,
+                                color: Colors.black,
                                 fontSize: 16,
                               ),
                             ),
                             Icon(Icons.calendar_today_outlined,
-                                color: Colors.red),
+                                color: Colors.black),
                           ],
                         ),
                       ),
                     ),
                   ),
-
+                  Container(
+                      child: Text(
+                          "Event can be be editted if it has 7 days remaining")),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
                     child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
                       onTap: () {
                         _selectTime(context);
                       },
@@ -434,22 +425,23 @@ class _AddEventsState extends State<AddEvents> {
                             Text(
                               time,
                               style: TextStyle(
-                                color: Colors.red,
+                                color: Colors.black,
                                 fontSize: 16,
                               ),
                             ),
-                            Icon(Icons.watch_later, color: Colors.red),
+                            Icon(Icons.watch_later, color: Colors.black),
                           ],
                         ),
                       ),
                     ),
                   ),
-
                   Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
+                    padding: const EdgeInsets.only(top: 16.0, bottom: 25),
                     child: GestureDetector(
                       onTap: () {
-                        if (_formKey.currentState.validate()) {
+                        if (_formKey.currentState.validate() &&
+                            date != "No Date Selected" &&
+                            time != "No Time Selected") {
                           print("Form is valid");
                           addingDataToFireStore(
                               uid,
@@ -462,7 +454,20 @@ class _AddEventsState extends State<AddEvents> {
                               expectedAudience,
                               date,
                               time,
-                              eventName);
+                              eventName,
+                              eventURL);
+                        } else if (date == "No Date Selected") {
+                          Get.snackbar(
+                              "No Date Selected", "Please select a date",
+                              snackPosition: SnackPosition.BOTTOM,
+                              colorText: Colors.orange,
+                              backgroundColor: Colors.black);
+                        } else if (time == "No Time Selected") {
+                          Get.snackbar(
+                              "No Time Selected", "Please select a Time",
+                              snackPosition: SnackPosition.BOTTOM,
+                              colorText: Colors.orange,
+                              backgroundColor: Colors.black);
                         } else {
                           print("form is not valid");
                         }
@@ -476,9 +481,9 @@ class _AddEventsState extends State<AddEvents> {
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                             colors: [
-                              Colors.red[400],
-                              Colors.red,
-                              Colors.red[600],
+                              Colors.black.withOpacity(0.6),
+                              Colors.black.withOpacity(0.7),
+                              Colors.black.withOpacity(0.8),
                             ],
                           ),
                         ),
@@ -489,7 +494,7 @@ class _AddEventsState extends State<AddEvents> {
                               fontSize: 32,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 1.6,
-                              color: Colors.black,
+                              color: Colors.orange.withOpacity(0.6),
                             ),
                           ),
                         ),
@@ -503,13 +508,6 @@ class _AddEventsState extends State<AddEvents> {
         ),
       ),
     );
-  }
-
-  bool _isNumeric(String result) {
-    if (result == null) {
-      return false;
-    }
-    return double.tryParse(result) != null;
   }
 
   Future<void> _selectDate(BuildContext context) async {
