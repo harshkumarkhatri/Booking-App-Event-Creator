@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-Widget dateAndTime_widget(dynamic snapshot, int index) {
+Widget dateAndTime_widget(dynamic snapshot, int index, String email) {
+  FieldPath field = FieldPath.fromString(email);
   return Container(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -9,10 +11,11 @@ Widget dateAndTime_widget(dynamic snapshot, int index) {
         Container(
           padding: EdgeInsets.only(left: 8),
           child: Text(
-            snapshot.data["${index + 1}"]['date'].toString(),
+            snapshot.data["${index + 1}_${field.hashCode}"]['date'].toString(),
             style: TextStyle(
               color: Colors.orange,
               fontWeight: FontWeight.w600,
+              fontSize: 14,
             ),
           ),
         ),
@@ -20,10 +23,11 @@ Widget dateAndTime_widget(dynamic snapshot, int index) {
         Container(
           padding: EdgeInsets.only(right: 8),
           child: Text(
-            snapshot.data["${index + 1}"]['time'].toString(),
+            snapshot.data["${index + 1}_${field.hashCode}"]['time'].toString(),
             style: TextStyle(
               color: Colors.orange,
               fontWeight: FontWeight.w600,
+              fontSize: 14,
             ),
           ),
         ),
