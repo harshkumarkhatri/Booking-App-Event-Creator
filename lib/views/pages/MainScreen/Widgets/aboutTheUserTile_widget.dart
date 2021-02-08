@@ -13,8 +13,6 @@ Widget aboutTheUserTile() {
       ),
     ),
     onTap: () {
-      // Update the state of the app.
-      // ...
       Get.back();
       Get.to(AboutTheUser());
     },
