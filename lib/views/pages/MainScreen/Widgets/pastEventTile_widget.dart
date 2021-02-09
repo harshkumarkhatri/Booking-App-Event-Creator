@@ -6,15 +6,13 @@ Widget pastEventTile() {
   return ListTile(
     tileColor: Colors.black,
     title: Text(
-      'Past Events',
+      '         Past Events',
       style: TextStyle(
         color: Colors.orange,
         fontWeight: FontWeight.w600,
       ),
     ),
     onTap: () {
-      // Update the state of the app.
-      // ...
       Get.back();
       Get.to(PastEventsScreen());
     },
