@@ -1,84 +1,88 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/blocs/mainScreen_bloc.dart';
-import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/addEvents_screen.dart';
+import 'package:flutter_booking_app_event_creator/repositories/logoutUser.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/activeEventTile_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/addEventButton_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/cancelledEventTile_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/dateAndTime_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/eventName_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/eventStatusText_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/locationAndEdit_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/aboutTheUserTile_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/createNewEventsTile_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/drawerDivider_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/drawerHeader_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/overAllStatsTile_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/pastEventTile_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/SettingsScreen/settingScreen_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 
 class MainScreen extends StatefulWidget {
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
-// TODO: Add dispose for block
-
 class _MainScreenState extends State<MainScreen> {
-  final mainScreen_bloc = MainScreenBloc();
+  final MainScreenBloc mainScreen_bloc = MainScreenBloc();
+  String email;
+  final _firebaseMessagin = FirebaseMessaging();
+  String _message = "message";
+  String _token = "generating token";
+
   @override
   void initState() {
     // TODO: implement initState
     mainScreen_bloc.eventSink.add(MainScreenActions.Fetch);
     super.initState();
-    getData();
-  }
-
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  User user;
-  var jey;
-
-  void inputData() {
-    final User _user = auth.currentUser;
-    // final uid = user.uid;
-    // here you write the codes to input the data into firestore
-
-    setState(() {
-      user = _user;
+    _firebaseMessagin.configure(
+        onMessage: (Map<String, dynamic> message) async {
+      print('on message ${message}');
+      setState(() => _message = "$message");
+    }, onResume: (Map<String, dynamic> message) async {
+      print('on resume ${message}');
+      setState(() => _message = "$message");
+    }, onLaunch: (Map<String, dynamic> message) async {
+      print('on launch ${message}');
+      setState(() => _message = "$message");
     });
-  }
 
-  // dynamic data;
-  DocumentSnapshot data;
-
-  Future<dynamic> getData() async {
-    inputData();
-
-    // final DocumentReference document =
-    final _data = await Firestore.instance
-        .collection("eventList")
-        .document(user.uid)
-        .get();
-    final demoThing = await Firestore.instance
-        .collection("eventList")
-        .document(user.uid)
-        .get()
-        .then((value) {
+    _firebaseMessagin.getToken().then((token) {
+      print(token);
       setState(() {
-        jey = value.data().values;
+        _token = "$token";
       });
-      for (var jey in value.data().values) {
-        print("printing inside getData ${jey["fullUserName"]}");
-      }
     });
-    // print(value.data()["5"].length)
-    // .getDocuments()
-    // .then((value) => print(value.size));
-    //  document(user.uid);
 
-    // await document.get().then<dynamic>((DocumentSnapshot snapshot) async {
-    //   setState(() {
-    //     data = snapshot.data;
-    //   });
-    // });
-    // setState(() {
-    //   data = _data;
-    // });
+    initialzingDemo();
+  }
 
-    // print("Data is ${_data['5']['fullUserName'].toString()}");
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    mainScreen_bloc.dispose();
+    print("disposing");
+  }
+
+  // In this we will be initializing a blank data base field for our new user
+  void initialzingDemo() async {
+    CollectionReference users = Firestore.instance.collection("eventList");
+
+    final FlutterSecureStorage storage = FlutterSecureStorage();
+    email = await storage.read(key: "email");
+    setState(() {});
+
+    final demoThing =
+        await Firestore.instance.collection("eventList").document(email).get();
+    if (demoThing.data() == null) {
+      users.document(email).set({});
+    }
   }
 
   @override
@@ -91,7 +95,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.black.withOpacity(0.9),
         elevation: 0,
         title: Text(
-          "Main Screen",
+          "Eventizer",
           style: TextStyle(
             color: Colors.orange,
           ),
@@ -99,12 +103,19 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: true,
         actions: <Widget>[
           PopupMenuButton<String>(
+            color: Colors.black,
             onSelected: handleClick,
             itemBuilder: (BuildContext context) {
-              return {'Logout', 'Settings'}.map((String choice) {
+              return {'Settings', 'Logout'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
-                  child: Text(choice),
+                  child: Text(
+                    choice,
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 );
               }).toList();
             },
@@ -116,9 +127,32 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             drawerHeader(),
             aboutTheUserTile(),
+            drawerDivider_widget(),
             createNewEventTile(),
-            pastEventTile(),
+            drawerDivider_widget(),
+            ExpansionTile(
+              trailing: Icon(
+                Icons.keyboard_arrow_down,
+                color: Colors.orange,
+              ),
+              title: Text(
+                "Events",
+                style: TextStyle(
+                  color: Colors.orange,
+                ),
+              ),
+              children: <Widget>[
+                drawerDivider_widget(),
+                pastEventTile(),
+                drawerDivider_widget(),
+                activeEventTile(),
+                drawerDivider_widget(),
+                cancelledEventTile(),
+              ],
+            ),
+            drawerDivider_widget(),
             overAllStateTile(),
+            drawerDivider_widget(),
           ],
         ),
       ),
@@ -126,36 +160,48 @@ class _MainScreenState extends State<MainScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.orange,
+        // child: Container(
+        //   child: Center(
+        //     child: Column(
+        //       children: [
+        //         Text(_token),
+        //         Divider(),
+        //         Text(_message),
+        //         RaisedButton(
+        //           onPressed: () {
+        //             print("Press me is pressed");
+        //             sendFcmMessage("Ki haal hai", "Changa fir rab rakha");
+        //           },
+        //           child: Text("Press me"),
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        // )
+
         child: Column(
           children: [
-            RaisedButton(
-              onPressed: () {
-                Get.to(AddEvents());
-              },
-              child: Text("Add event"),
-            ),
-            // Text("Evet added by")
+            addEventButton(),
             StreamBuilder(
-                stream: mainScreen_bloc.mainScreenStream,
-                builder: (context, snapshot) {
-                  mainScreen_bloc.eventSink.add(MainScreenActions.Fetch);
-                  if (snapshot.hasError) {
-                    print("Inside has error");
-                    return Container(
-                        child: Text(
+              stream: mainScreen_bloc.mainScreenStream,
+              builder: (context, snapshot) {
+                mainScreen_bloc.eventSink.add(MainScreenActions.Fetch);
+                if (snapshot.hasError) {
+                  return Container(
+                    child: Text(
                       snapshot.error.toString(),
-                    ));
-                  }
-                  if (snapshot.hasData) {
-                    // print("Inside has data");
-                    print("length inside if ${snapshot.data.keys.length}");
-                    // return Text(snapshot.data.toString());
+                      textAlign: TextAlign.center,
+                    ),
+                  );
+                }
+                if (snapshot.hasData) {
+                  if (snapshot.data.keys.length == 0) {
+                    return Container(child: Text("Add your first event"));
+                  } else {
                     return Expanded(
-                      // height: 400,
                       child: ListView.builder(
                           itemCount: snapshot.data.keys.length,
                           itemBuilder: (context, index) {
-                            // print(index);
                             return Padding(
                               padding: const EdgeInsets.only(
                                   left: 15, right: 15.0, top: 4, bottom: 4),
@@ -172,207 +218,25 @@ class _MainScreenState extends State<MainScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     children: [
-                                      Container(
-                                        child: Text(
-                                          index.toString(),
-                                          // country['eventName'].toString(),
-                                          // snapshot.data[index + 1]['eventName']
-                                          //     .toString(),
-                                          style: TextStyle(
-                                            color: Colors.orange,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Icon(Icons.calendar_today,
-                                                color: Colors.orange),
-                                            Container(
-                                              padding: EdgeInsets.only(left: 8),
-                                              child: Text(
-                                                "ss",
-                                                // snapshot.data[index + 1]['date']
-                                                //     .toString(),
-                                                // country['date'].toString(),
-                                                style: TextStyle(
-                                                  color: Colors.orange,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ),
-                                            Spacer(),
-                                            Container(
-                                              padding:
-                                                  EdgeInsets.only(right: 8),
-                                              child: Text(
-                                                "ded"
-                                                // country['time'].toString(),
-                                                // snapshot.data[index + 1]['time']
-                                                // .toString(),
-                                                ,
-                                                style: TextStyle(
-                                                  color: Colors.orange,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ),
-                                            Icon(
-                                              Icons.lock_clock,
-                                              color: Colors.orange,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 4.0),
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.location_on,
-                                                color: Colors.orange),
-                                            Container(
-                                              padding: EdgeInsets.only(left: 8),
-                                              child: Text(
-                                                "ss",
-                                                // "${country['eventCity']}, ${country['eventState']}",
-                                                style: TextStyle(
-                                                  color: Colors.orange,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ),
-                                            Spacer(),
-                                            Icon(
-                                              Icons.edit,
-                                              color: Colors.orange,
-                                            )
-                                          ],
-                                        ),
-                                      )
+                                      eventName_widget(snapshot, index, email),
+                                      dateAndTime_widget(
+                                          snapshot, index, email),
+                                      locationAndEdit_widget(
+                                          snapshot, index, email),
+                                      eventStatusText_widget(
+                                          snapshot, index, email),
                                     ],
                                   ),
                                 ),
-                                // Expanded(child: Text("${country}")),
-                                // Text(country['date'].toString()),
-                                // Text(country['eventCity'].toString())
                               ),
                             );
-                            // Text(
-                            //   index.toString(),
-                            // );
                           }),
                     );
-                    Container(
-                      child: Text(snapshot.data.toString()),
-                    );
                   }
-                  return Container(
-                    child: Text(
-                      "this is a demo text",
-                    ),
-                  );
-                })
-            // if (jey == null)
-            //   CircularProgressIndicator()
-            // else
-            //   for (var country in jey)
-            // Padding(
-            //   padding: const EdgeInsets.only(
-            //       left: 15, right: 15.0, top: 4, bottom: 4),
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       color: Colors.black.withOpacity(
-            //         0.9,
-            //       ),
-            //       borderRadius: BorderRadius.circular(
-            //         14,
-            //       ),
-            //     ),
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(8.0),
-            //       child: Column(
-            //         children: [
-            //           Container(
-            //             child: Text(
-            //               country['eventName'].toString(),
-            //               style: TextStyle(
-            //                 color: Colors.orange,
-            //                 fontSize: 18,
-            //                 fontWeight: FontWeight.w700,
-            //               ),
-            //             ),
-            //           ),
-            //           Container(
-            //             child: Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //               children: [
-            //                 Icon(Icons.calendar_today,
-            //                     color: Colors.orange),
-            //                 Container(
-            //                   padding: EdgeInsets.only(left: 8),
-            //                   child: Text(
-            //                     country['date'].toString(),
-            //                     style: TextStyle(
-            //                       color: Colors.orange,
-            //                       fontWeight: FontWeight.w600,
-            //                     ),
-            //                   ),
-            //                 ),
-            //                 Spacer(),
-            //                 Container(
-            //                   padding: EdgeInsets.only(right: 8),
-            //                   child: Text(
-            //                     country['time'].toString(),
-            //                     style: TextStyle(
-            //                       color: Colors.orange,
-            //                       fontWeight: FontWeight.w600,
-            //                     ),
-            //                   ),
-            //                 ),
-            //                 Icon(
-            //                   Icons.lock_clock,
-            //                   color: Colors.orange,
-            //                 ),
-            //               ],
-            //             ),
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.only(top: 4.0),
-            //             child: Row(
-            //               children: [
-            //                 Icon(Icons.location_on, color: Colors.orange),
-            //                 Container(
-            //                   padding: EdgeInsets.only(left: 8),
-            //                   child: Text(
-            //                     "${country['eventCity']}, ${country['eventState']}",
-            //                     style: TextStyle(
-            //                       color: Colors.orange,
-            //                       fontWeight: FontWeight.w600,
-            //                     ),
-            //                   ),
-            //                 ),
-            //                 Spacer(),
-            //                 Icon(
-            //                   Icons.edit,
-            //                   color: Colors.orange,
-            //                 )
-            //               ],
-            //             ),
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //     // Expanded(child: Text("${country}")),
-            //     // Text(country['date'].toString()),
-            //     // Text(country['eventCity'].toString())
-            //   ),
-            // )
-            // Text("New ${country} \n")
+                }
+                return CircularProgressIndicator();
+              },
+            )
           ],
         ),
       ),
@@ -382,11 +246,44 @@ class _MainScreenState extends State<MainScreen> {
   void handleClick(String value) {
     switch (value) {
       case 'Logout':
-        print("Clicked on logout");
+        loggingOut();
         break;
       case 'Settings':
-        print("Clicked on Settings");
+        Get.to(SettingScreen());
         break;
     }
   }
+
+  // static Future<bool> sendFcmMessage(String title, String message) async {
+  //   print("Inside fcm");
+  //   try {
+  //     print("Inside try");
+  //     var url = 'https://fcm.googleapis.com/fcm/send';
+  //     var header = {
+  //       "Content-Type": "application/json",
+  //       "Authorization":
+  //           "key=AAAAZR1NjDc:APA91bEWKQ76JNXFL5nxgzFFNHaP7AJtYD3FuCoFthguHjyoN663mYOx7wgrwf5PmCy5z4pTJ5HLabPe29NeudrTzAzaJ4TGV0u9-7whqPNjEM2TVBEry3teoPqzQIc4pYPgpYu-Iaym",
+  //     };
+  //     var request = {
+  //       "notification": {
+  //         "title": title,
+  //         "text": message,
+  //         "sound": "default",
+  //         "color": "#990000",
+  //       },
+  //       "priority": "high",
+  //       "to": "/topics/eventCreators",
+  //     };
+
+  //     var client = new Client();
+  //     var response =
+  //         await client.post(url, headers: header, body: json.encode(request));
+  //     print("response is ${response.body}");
+  //     return true;
+  //   } catch (e, s) {
+  //     print("inside error");
+  //     print(e);
+  //     return false;
+  //   }
+  // }
 }
