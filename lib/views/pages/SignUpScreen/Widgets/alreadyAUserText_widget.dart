@@ -6,7 +6,7 @@ Widget alreadyAUserText() {
       child: Text(
         "Already a User?",
         style: TextStyle(
-          color: Colors.yellow,
+          color: Colors.black,
         ),
       ),
     ),
