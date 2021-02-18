@@ -63,7 +63,7 @@ class _WhatsNewScreenState extends State<WhatsNewScreen> {
                   }),
             );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Center(child: CircularProgressIndicator());
           }
 
           // By default, show a loading spinner.
