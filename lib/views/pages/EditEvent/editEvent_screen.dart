@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/repositories/numericCheck.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Wi
 import 'package:flutter_booking_app_event_creator/views/pages/EditEvent/Widgets/itemText_widget.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 class EditEventScreen extends StatefulWidget {
   EditEventScreen({int this.index});
@@ -493,6 +496,28 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                     top: 16.0, bottom: 25),
                                 child: GestureDetector(
                                   onTap: () {
+                                    print("event status $eventStatus");
+                                    String api_link =
+                                        "https://e81va8lp88.execute-api.ap-south-1.amazonaws.com/1/sendEmailSingleID/posting";
+                                    List cancelledEmails = [];
+                                    if (eventStatus != 'active') {
+                                      print(registeredUsers);
+                                      for (int i = 0;
+                                          i < registeredUsers.length;
+                                          i++) {
+                                        cancelledEmails
+                                            .add(registeredUsers[i]['email']);
+                                      }
+                                      print("you canceled an event");
+                                      http
+                                          .post(api_link,
+                                              body: jsonEncode({
+                                                "value1": "This is value 1",
+                                                "cancelledEmails":
+                                                    cancelledEmails
+                                              }))
+                                          .then((value) => print(value.body));
+                                    }
                                     if (_formKey.currentState.validate()) {
                                       print("Form is valid");
                                       updateEventDataToFireStore(
@@ -511,6 +536,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                           eventURL,
                                           registeredUsers,
                                           widget.index);
+
                                       print(
                                           "Adding data directly to firestore");
                                     } else {

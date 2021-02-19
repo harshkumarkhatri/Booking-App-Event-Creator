@@ -5,7 +5,7 @@ Widget aboutTheAppText_widget() {
     padding: const EdgeInsets.only(top: 8.0),
     child: Container(
       child: Text(
-        "Eventizer is an app that helps you to create or schedule your events on the go and let people know about the things which you are organizing. This app is the event registering app through which you can add your events, edit your events, change the status of your events, and view the overall stats for your event. Every time a new event is created, users can register for your event.",
+        "Eventizer is an app that helps you to create or schedule your events on the go and let people know about the events which you are organizing. hrough this app you can let masses know about your event and increase the reach of your event. Every time a new event is created, users will be getting a notification/mail about it and then they can register for your event.",
         style: TextStyle(
           color: Colors.black,
           fontSize: 20,
