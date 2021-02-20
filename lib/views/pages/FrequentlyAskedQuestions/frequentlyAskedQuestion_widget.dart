@@ -223,7 +223,7 @@ class _FrequentlyAskedQuestionsScreenState
                       ),
                       initial8 == true
                           ? answerText_widget(
-                              "When an event will be cancelled then a notification will be sent to the users who have registered for that event. \nThe organizer won't be able to edit the event again.")
+                              "When an event will be cancelled then an email will be sent to the users who have registered for that event. \nThe organizer won't be able to edit the event again.")
                           : Container(),
                       Padding(
                         padding: const EdgeInsets.only(top: 15.0),
