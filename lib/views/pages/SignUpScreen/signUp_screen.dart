@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/alreadyAUserText_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/loginButton_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/signUpButtonSingUpScreen_widget.dart';
-import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/singUpWithGoogleButton_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/Widgets/signUpWithGoogleButton_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.blue,
+        color: Colors.orange,
         child: SafeArea(
           child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15.0),
@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: Text(
                                 "Sign Up",
                                 style: TextStyle(
-                                  color: Colors.yellow,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 1.6,
                                   fontSize: 40,
@@ -53,8 +53,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 25.0),
                             child: TextFormField(
-                              style: TextStyle(color: Colors.yellow),
+                              style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
                                 labelText: "Email",
                                 labelStyle: TextStyle(color: Colors.black),
                                 errorStyle: TextStyle(
@@ -85,6 +94,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: TextFormField(
                               obscureText: true,
                               decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
                                 labelText: "Password",
                                 labelStyle: TextStyle(color: Colors.black),
                                 errorStyle: TextStyle(
@@ -110,6 +128,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: TextFormField(
                               obscureText: true,
                               decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
                                 labelText: "Confirm Password",
                                 labelStyle: TextStyle(color: Colors.black),
                                 errorStyle: TextStyle(
