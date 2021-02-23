@@ -9,6 +9,7 @@ import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/addEventButton_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/cancelledEventTile_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/dateAndTime_widget.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/detailsText_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/eventName_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/eventStatusText_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets/EventItem/locationAndEdit_widget.dart';
@@ -160,25 +161,6 @@ class _MainScreenState extends State<MainScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.orange,
-        // child: Container(
-        //   child: Center(
-        //     child: Column(
-        //       children: [
-        //         Text(_token),
-        //         Divider(),
-        //         Text(_message),
-        //         RaisedButton(
-        //           onPressed: () {
-        //             print("Press me is pressed");
-        //             sendFcmMessage("Ki haal hai", "Changa fir rab rakha");
-        //           },
-        //           child: Text("Press me"),
-        //         )
-        //       ],
-        //     ),
-        //   ),
-        // )
-
         child: Column(
           children: [
             addEventButton(),
@@ -202,6 +184,8 @@ class _MainScreenState extends State<MainScreen> {
                       child: ListView.builder(
                           itemCount: snapshot.data.keys.length,
                           itemBuilder: (context, index) {
+                            print(
+                                "length of items ${snapshot.data.keys.length}");
                             return Padding(
                               padding: const EdgeInsets.only(
                                   left: 15, right: 15.0, top: 4, bottom: 4),
@@ -224,6 +208,8 @@ class _MainScreenState extends State<MainScreen> {
                                       locationAndEdit_widget(
                                           snapshot, index, email),
                                       eventStatusText_widget(
+                                          snapshot, index, email),
+                                      detailsText_widget(
                                           snapshot, index, email),
                                     ],
                                   ),
@@ -253,37 +239,4 @@ class _MainScreenState extends State<MainScreen> {
         break;
     }
   }
-
-  // static Future<bool> sendFcmMessage(String title, String message) async {
-  //   print("Inside fcm");
-  //   try {
-  //     print("Inside try");
-  //     var url = 'https://fcm.googleapis.com/fcm/send';
-  //     var header = {
-  //       "Content-Type": "application/json",
-  //       "Authorization":
-  //           "key=AAAAZR1NjDc:APA91bEWKQ76JNXFL5nxgzFFNHaP7AJtYD3FuCoFthguHjyoN663mYOx7wgrwf5PmCy5z4pTJ5HLabPe29NeudrTzAzaJ4TGV0u9-7whqPNjEM2TVBEry3teoPqzQIc4pYPgpYu-Iaym",
-  //     };
-  //     var request = {
-  //       "notification": {
-  //         "title": title,
-  //         "text": message,
-  //         "sound": "default",
-  //         "color": "#990000",
-  //       },
-  //       "priority": "high",
-  //       "to": "/topics/eventCreators",
-  //     };
-
-  //     var client = new Client();
-  //     var response =
-  //         await client.post(url, headers: header, body: json.encode(request));
-  //     print("response is ${response.body}");
-  //     return true;
-  //   } catch (e, s) {
-  //     print("inside error");
-  //     print(e);
-  //     return false;
-  //   }
-  // }
 }
