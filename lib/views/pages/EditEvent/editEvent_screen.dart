@@ -497,10 +497,10 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                 child: GestureDetector(
                                   onTap: () {
                                     print("event status $eventStatus");
-                                    String api_link =
-                                        "https://e81va8lp88.execute-api.ap-south-1.amazonaws.com/1/sendEmailSingleID/posting";
                                     List cancelledEmails = [];
                                     if (eventStatus != 'active') {
+                                      String api_link =
+                                          "https://e81va8lp88.execute-api.ap-south-1.amazonaws.com/1/sendEmailSingleID/posting";
                                       print(registeredUsers);
                                       for (int i = 0;
                                           i < registeredUsers.length;
@@ -509,6 +509,28 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                             .add(registeredUsers[i]['email']);
                                       }
                                       print("you canceled an event");
+                                      http
+                                          .post(api_link,
+                                              body: jsonEncode({
+                                                "value1": "This is value 1",
+                                                "cancelledEmails":
+                                                    cancelledEmails
+                                              }))
+                                          .then((value) => print(value.body));
+                                    } else {
+                                      String api_link =
+                                          "https://a6qwebn0gk.execute-api.ap-south-1.amazonaws.com/1/sendUpdateAboutEventUpdated/posting";
+                                      print(registeredUsers);
+                                      for (int i = 0;
+                                          i < registeredUsers.length;
+                                          i++) {
+                                        cancelledEmails
+                                            .add(registeredUsers[i]['email']);
+                                      }
+                                      print("you updated an event");
+
+                                      // These values i have kept same so that i don't need to create the same variable again.
+                                      // Currently this api will only send a demo text to the mails in the cancelledEmails list
                                       http
                                           .post(api_link,
                                               body: jsonEncode({
