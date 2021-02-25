@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget drawerHeader() {
+Widget drawerHeader(String email) {
   return Container(
     height: 80,
     child: DrawerHeader(
@@ -11,7 +11,7 @@ Widget drawerHeader() {
           children: [
             Flexible(
               child: Text(
-                "demo@gmail.com",
+                email,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
