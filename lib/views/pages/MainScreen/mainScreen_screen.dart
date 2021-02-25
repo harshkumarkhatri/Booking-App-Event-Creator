@@ -126,7 +126,7 @@ class _MainScreenState extends State<MainScreen> {
       drawer: Drawer(
         child: ListView(
           children: [
-            drawerHeader(),
+            drawerHeader(email),
             aboutTheUserTile(),
             drawerDivider_widget(),
             createNewEventTile(),
