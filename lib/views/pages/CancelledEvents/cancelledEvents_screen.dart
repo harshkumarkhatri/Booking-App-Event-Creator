@@ -19,7 +19,6 @@ class _CancelledEventsScreenState extends State<CancelledEventsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initialzingDemo();
   }
@@ -32,28 +31,19 @@ class _CancelledEventsScreenState extends State<CancelledEventsScreen> {
     final demo =
         await Firestore.instance.collection("eventList").document(email).get();
 
-    print("Demothing");
     field = FieldPath.fromString(email);
 
-    // print(demoThing.data().keys);
     setState(() {
       itemLength = demo.data().keys.length;
       demoThing = demo;
       noEventFound = true;
     });
-    print(field.hashCode);
-    print(demoThing.data()['1_${field.hashCode}']["eventStatus"]);
 
     if (demoThing != null) {
-      print("demo thing is not null");
       if (demoThing.data() == null) {
-        print("dem thing data is null");
         users.document(email).set({});
       } else {
-        print("demo thing data is not null");
         for (int i = 1; i <= demoThing.data().keys.length; i++) {
-          print(i);
-          print(demoThing.data()['${i}_${field.hashCode}']["eventStatus"]);
           if (demoThing.data()['${i}_${field.hashCode}']["eventStatus"] ==
               "cancelled") {
             setState(() {
@@ -93,9 +83,7 @@ class _CancelledEventsScreenState extends State<CancelledEventsScreen> {
               : Center(child: CircularProgressIndicator())
           : noCancelledEventFound
               ? noEventsExists(context, "No cancelled events exisits")
-              :
-              // Container(color: Colors.red, child: Text("Hello")),
-              Container(
+              : Container(
                   decoration: BoxDecoration(color: Colors.orange),
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,

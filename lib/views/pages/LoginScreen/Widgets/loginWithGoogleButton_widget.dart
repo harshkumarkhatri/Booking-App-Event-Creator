@@ -8,7 +8,6 @@ Widget loginWithGoogleButton() {
     onTap: () {
       Future<String> output = handleSignIn();
       output.then((value) {
-        print(value);
         value == "Success"
             ? Get.offAll(MainScreen())
             : Get.snackbar("Unsuccessful Login", "Please try again.");

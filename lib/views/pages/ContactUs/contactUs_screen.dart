@@ -3,6 +3,7 @@ import 'package:flutter_booking_app_event_creator/responses/addProblemsToFireSto
 import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Widgets/textForField_inputDecoration.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/ContactUs/Widgets/contactUs_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/ContactUs/Widgets/overwrittenText_widget.dart';
+import 'package:get/get.dart';
 
 class ContactUsScreen extends StatefulWidget {
   @override
@@ -92,10 +93,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     child: GestureDetector(
                       onTap: () {
                         if (_formKey.currentState.validate()) {
-                          print("form is valid");
                           addProblemsToFireStore(name, desc);
                         } else {
-                          print("form is not valid");
+                          Get.snackbar("Something wrong",
+                              "Hey something is not wrong. Please contact the developer.");
                         }
                       },
                       child: contactUs_widget(context),

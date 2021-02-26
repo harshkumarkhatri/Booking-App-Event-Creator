@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:share/share.dart';
 
 Widget shareTheApp_widget(IconData icon, String text) {
@@ -12,7 +11,6 @@ Widget shareTheApp_widget(IconData icon, String text) {
       );
     },
     child: Container(
-      // color: Colors.pink,
       alignment: Alignment.centerLeft,
       height: 45,
       child: Row(
@@ -24,7 +22,6 @@ Widget shareTheApp_widget(IconData icon, String text) {
           Text(
             text,
             style: TextStyle(
-              // color: Colors.orange,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),

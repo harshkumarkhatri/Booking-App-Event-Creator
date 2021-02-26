@@ -19,7 +19,6 @@ class _PastEventsScreenState extends State<PastEventsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initialzingDemo();
   }
@@ -32,8 +31,6 @@ class _PastEventsScreenState extends State<PastEventsScreen> {
     final demo =
         await Firestore.instance.collection("eventList").document(email).get();
 
-    print("Demothing");
-    // print(demoThing.data().keys);
     field = FieldPath.fromString(email);
 
     setState(() {
@@ -47,7 +44,6 @@ class _PastEventsScreenState extends State<PastEventsScreen> {
         users.document(email).set({});
       } else {
         for (int i = 1; i <= demoThing.data().keys.length; i++) {
-          print(i);
           if (demoThing.data()['${i}_${field.hashCode}']["eventStatus"] ==
               "expired") {
             setState(() {

@@ -7,15 +7,10 @@ Widget loginButtonLoginScreen(BuildContext context,
     GlobalKey<FormState> _formKey, String email, String password) {
   return GestureDetector(
     onTap: () {
-      if (_formKey.currentState.validate()) {
-        // If the form is valid, display a Snackbar.
-        // Scaffold.of(context).showSnackBar(
-        //     SnackBar(content: Text('Processing Data')));
-      }
+      if (_formKey.currentState.validate()) {}
       Future<String> output = signin(email, password, _formKey);
       output.then(
         (value) {
-          print(value);
           value == "Success"
               ? Get.offAll(MainScreen())
               : Get.snackbar("Login Error", "Please try again later",
@@ -55,18 +50,6 @@ Widget loginButtonLoginScreen(BuildContext context,
           ),
         ),
       ),
-      //  ElevatedButton(
-      //   onPressed: () {
-      //     // Validate returns true if the form is valid, or false
-      //     // otherwise.
-      // if (_formKey.currentState.validate()) {
-      //   // If the form is valid, display a Snackbar.
-      //   // Scaffold.of(context).showSnackBar(
-      //   //     SnackBar(content: Text('Processing Data')));
-      // }
-      //   },
-      //   child: Text('Submit'),
-      // ),
     ),
   );
 }

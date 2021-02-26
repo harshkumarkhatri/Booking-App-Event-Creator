@@ -18,15 +18,12 @@ class _EditNameScreenState extends State<EditNameScreen> {
 
   void inputData() {
     final User _user = auth.currentUser;
-    // final uid = user.uid;
-    // here you write the codes to input the data into firestore
 
     setState(() {
       user = _user;
     });
 
     print(user);
-    // print(uid);
     setState(() {
       userName = user.displayName == "" || user.displayName == null
           ? "No display name found"
@@ -36,7 +33,6 @@ class _EditNameScreenState extends State<EditNameScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     inputData();
   }

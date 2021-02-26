@@ -39,7 +39,6 @@ Widget imageCircle(context) {
           ],
         ),
       ),
-      //
     ],
   );
 }

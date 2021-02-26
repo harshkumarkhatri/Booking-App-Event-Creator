@@ -15,15 +15,10 @@ class _AboutTheUserState extends State<AboutTheUser> {
 
   void inputData() {
     final User _user = auth.currentUser;
-    // final uid = user.uid;
-    // here you write the codes to input the data into firestore
 
     setState(() {
       user = _user;
     });
-
-    print(user.uid);
-    // print(uid);
   }
 
   @override
@@ -63,8 +58,6 @@ class _AboutTheUserState extends State<AboutTheUser> {
             children: [
               emailText_widget(user),
               SizedBox(height: 25),
-              // TODO: see if username is present or not.
-              // If not present then type no name found and provide them with an option to add name, phone nummber.
               nameText_widget(user),
               editYourUserNameText_widget(),
             ],

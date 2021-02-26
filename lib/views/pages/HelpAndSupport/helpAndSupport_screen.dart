@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/HelpAndSupport/Widgets/helpAndSupport_body_widget.dart';
-import 'package:mailto/mailto.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HelpAndSupportScreen extends StatefulWidget {
   @override

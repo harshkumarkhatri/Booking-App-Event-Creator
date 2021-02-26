@@ -99,5 +99,3 @@ class _SettingScreenState extends State<SettingScreen> {
     );
   }
 }
-
-// Edit name

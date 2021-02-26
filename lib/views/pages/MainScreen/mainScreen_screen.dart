@@ -38,23 +38,18 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     mainScreen_bloc.eventSink.add(MainScreenActions.Fetch);
     super.initState();
     _firebaseMessagin.configure(
         onMessage: (Map<String, dynamic> message) async {
-      print('on message ${message}');
       setState(() => _message = "$message");
     }, onResume: (Map<String, dynamic> message) async {
-      print('on resume ${message}');
       setState(() => _message = "$message");
     }, onLaunch: (Map<String, dynamic> message) async {
-      print('on launch ${message}');
       setState(() => _message = "$message");
     });
 
     _firebaseMessagin.getToken().then((token) {
-      print(token);
       setState(() {
         _token = "$token";
       });
@@ -65,10 +60,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     mainScreen_bloc.dispose();
-    print("disposing");
   }
 
   // In this we will be initializing a blank data base field for our new user
@@ -184,8 +177,6 @@ class _MainScreenState extends State<MainScreen> {
                       child: ListView.builder(
                           itemCount: snapshot.data.keys.length,
                           itemBuilder: (context, index) {
-                            print(
-                                "length of items ${snapshot.data.keys.length}");
                             return Padding(
                               padding: const EdgeInsets.only(
                                   left: 15, right: 15.0, top: 4, bottom: 4),

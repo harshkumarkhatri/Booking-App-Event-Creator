@@ -9,7 +9,6 @@ Widget logout_widget(IconData icon, String text) {
       loggingOut();
     },
     child: Container(
-      // color: Colors.pink,
       alignment: Alignment.centerLeft,
       height: 45,
       child: Row(
@@ -21,7 +20,6 @@ Widget logout_widget(IconData icon, String text) {
           Text(
             text,
             style: TextStyle(
-              // color: Colors.orange,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),

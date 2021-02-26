@@ -8,7 +8,6 @@ Widget demoWidget(IconData icon, String text, Widget page) {
       Get.to(page);
     },
     child: Container(
-      // color: Colors.pink,
       alignment: Alignment.centerLeft,
       height: 45,
       child: Row(
@@ -20,7 +19,6 @@ Widget demoWidget(IconData icon, String text, Widget page) {
           Text(
             text,
             style: TextStyle(
-              // color: Colors.orange,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),

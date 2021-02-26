@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/LoginScreen/login_screen.dart';
-import 'package:flutter_booking_app_event_creator/views/pages/SignUpScreen/signUp_screen.dart';
 import 'package:get/get.dart';
 
 Widget loginButtonSignUpScreen() {

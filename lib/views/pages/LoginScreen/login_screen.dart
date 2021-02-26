@@ -78,7 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 bool emailValid = RegExp(
                                         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                     .hasMatch(value);
-                                print(emailValid);
                                 if (value.isEmpty ||
                                     value.length < 4 ||
                                     !emailValid) {

@@ -8,7 +8,6 @@ Widget signUpWithGoogleButton() {
     onTap: () {
       Future<String> output = handleSignIn();
       output.then((value) {
-        print(value);
         value == "Success"
             ? Get.offAll(MainScreen())
             : Get.snackbar("Unsuccessful Singup", "Please try again.");

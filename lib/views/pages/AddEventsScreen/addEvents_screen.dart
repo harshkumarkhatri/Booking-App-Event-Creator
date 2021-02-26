@@ -90,16 +90,10 @@ class _AddEventsState extends State<AddEvents> {
                         textFormField_inputDecoration("Event Name", null),
                     onChanged: (value) {
                       setState(() {
-                        // email = value;
                         eventName = value;
-                        print(value);
                       });
                     },
                     validator: (value) {
-                      // bool emailValid = RegExp(
-                      //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                      //     .hasMatch(value);
-                      // print(emailValid);
                       if (value.isEmpty || value.length < 4) {
                         return 'Event Name cannot be less than 4 characters.';
                       }
@@ -113,9 +107,7 @@ class _AddEventsState extends State<AddEvents> {
                         "Organizer's Full Name", null),
                     onChanged: (value) {
                       setState(() {
-                        // email = value;
                         fullUserName = value;
-                        print(value);
                       });
                     },
                     validator: (value) {
@@ -143,7 +135,6 @@ class _AddEventsState extends State<AddEvents> {
                               contactEmail,
                               style: TextStyle(
                                 fontSize: 16,
-                                // fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
@@ -158,18 +149,14 @@ class _AddEventsState extends State<AddEvents> {
                             decoration: textFormField_inputDecoration(
                                 "Contact Email", null),
                             onChanged: (value) {
-                              print(value.indexOf("@"));
                               setState(() {
-                                // email = value;
                                 contactEmail = value;
-                                print(value);
                               });
                             },
                             validator: (value) {
                               bool emailValid = RegExp(
                                       r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                   .hasMatch(value);
-                              // print(emailValid);
                               if (!this.valuefirst) if (value.isEmpty ||
                                   value.length < 4 ||
                                   !emailValid) {
@@ -191,13 +178,11 @@ class _AddEventsState extends State<AddEvents> {
                         activeColor: Colors.red,
                         value: this.valuefirst,
                         onChanged: (bool value) async {
-                          print(value);
                           FlutterSecureStorage storage = FlutterSecureStorage();
                           String email = await storage.read(key: "email");
 
                           setState(() {
                             if (value == true) {
-                              print("value is true $email");
                               contactEmail = email;
                             }
 
@@ -218,9 +203,7 @@ class _AddEventsState extends State<AddEvents> {
                           "Numbers won't be shown to people registering for the event"),
                       onChanged: (value) {
                         setState(() {
-                          // email = value;
                           phoneNumber = value;
-                          print(value);
                         });
                       },
                       validator: (value) {
@@ -279,9 +262,7 @@ class _AddEventsState extends State<AddEvents> {
                           textFormField_inputDecoration("Event City", null),
                       onChanged: (value) {
                         setState(() {
-                          // email = value;
                           eventCity = value;
-                          // print(value);
                         });
                       },
                       validator: (value) {
@@ -336,14 +317,11 @@ class _AddEventsState extends State<AddEvents> {
                       decoration: textFormField_inputDecoration(
                           "Expected audience", null),
                       onChanged: (value) {
-                        print(value.runtimeType);
                         setState(() {
                           expectedAudience = value;
-                          print(value);
                         });
                       },
                       validator: (value) {
-                        print("Inside ected audience validator");
                         if (isNumeric(value) == true) {
                           return null;
                         } else {
@@ -363,7 +341,6 @@ class _AddEventsState extends State<AddEvents> {
                       onChanged: (value) {
                         setState(() {
                           eventURL = value;
-                          print(value);
                         });
                       },
                       validator: (value) {
@@ -442,7 +419,6 @@ class _AddEventsState extends State<AddEvents> {
                         if (_formKey.currentState.validate() &&
                             date != "No Date Selected" &&
                             time != "No Time Selected") {
-                          print("Form is valid");
                           addingDataToFireStore(
                               uid,
                               fullUserName,
@@ -468,9 +444,7 @@ class _AddEventsState extends State<AddEvents> {
                               snackPosition: SnackPosition.BOTTOM,
                               colorText: Colors.orange,
                               backgroundColor: Colors.black);
-                        } else {
-                          print("form is not valid");
-                        }
+                        } else {}
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,
@@ -530,7 +504,6 @@ class _AddEventsState extends State<AddEvents> {
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay pickedTime =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
-    print(pickedTime);
     if (pickedTime != null && pickedTime != selectedTime) {
       setState(() {
         time = pickedTime.format(context).toString();

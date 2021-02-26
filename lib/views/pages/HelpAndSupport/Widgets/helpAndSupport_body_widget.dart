@@ -32,7 +32,6 @@ Widget helpAndSupport_body_widget(BuildContext context) {
               behavior: HitTestBehavior.opaque,
               onTap: () {
                 launchMailto();
-                print("maling harsh");
               },
               child: Padding(
                 padding: const EdgeInsets.only(top: 18.0),

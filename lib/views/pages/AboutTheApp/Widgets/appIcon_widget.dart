@@ -1,3 +1,5 @@
+// App icon widget for about the app screen
+
 import 'package:flutter/material.dart';
 
 Widget appIcon_widget() {

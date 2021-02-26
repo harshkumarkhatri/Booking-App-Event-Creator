@@ -53,7 +53,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     init();
   }
@@ -89,7 +88,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
         eventURL = userData['eventURL'];
         registeredUsers = userData['registeredUsers'];
         selectedDate = DateTime.parse(date);
-        // print(isSwitched);
         var df = DateFormat("h:mma");
         DateTime dt = df.parse(userData['time'].replaceAll(" ", ""));
         selectedTime = TimeOfDay.fromDateTime(dt);
@@ -110,7 +108,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
           userData['eventStatus'] != 'active') {
         isEditable = false;
       }
-      // print(DateTime.now().isBefore(tempDate));
     });
   }
 
@@ -165,16 +162,11 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                     "Event Name", null),
                                 onChanged: (value) {
                                   setState(() {
-                                    // email = value;
                                     eventName = value;
                                     print(value);
                                   });
                                 },
                                 validator: (value) {
-                                  // bool emailValid = RegExp(
-                                  //         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                                  //     .hasMatch(value);
-                                  // print(emailValid);
                                   if (value.isEmpty || value.length < 4) {
                                     return 'Event Name cannot be less than 4 characters.';
                                   }
@@ -189,7 +181,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                     "Organizer's Full Name", null),
                                 onChanged: (value) {
                                   setState(() {
-                                    // email = value;
                                     fullUserName = value;
                                     print(value);
                                   });
@@ -218,7 +209,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       "Contact Email", null),
                                   onChanged: (value) {
                                     setState(() {
-                                      // email = value;
                                       contactEmail = value;
                                       print(value);
                                     });
@@ -227,7 +217,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                     bool emailValid = RegExp(
                                             r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                         .hasMatch(value);
-                                    // print(emailValid);
                                     if (value.isEmpty ||
                                         value.length < 4 ||
                                         !emailValid) {
@@ -249,7 +238,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       "Numbers won't be shown to people registering for the event"),
                                   onChanged: (value) {
                                     setState(() {
-                                      // email = value;
                                       phoneNumber = value;
                                       print(value);
                                     });
@@ -314,9 +302,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       "Event City", null),
                                   onChanged: (value) {
                                     setState(() {
-                                      // email = value;
                                       eventCity = value;
-                                      // print(value);
                                     });
                                   },
                                   validator: (value) {
@@ -327,8 +313,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                   },
                                 ),
                               ),
-
-                              // TODO: Convert this to match the event type option on bookmy show website
                               chooseText("Choose Event Type"),
                               Padding(
                                 padding: const EdgeInsets.only(top: 0.0),
@@ -366,7 +350,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                   ),
                                 ),
                               ),
-
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 12.0, bottom: 12),
@@ -424,7 +407,6 @@ class _EditEventScreenState extends State<EditEventScreen> {
                               itemText("Time"),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  // top: 12.0,
                                   bottom: 12,
                                 ),
                                 child: GestureDetector(

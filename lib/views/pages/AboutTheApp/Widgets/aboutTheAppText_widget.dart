@@ -1,3 +1,5 @@
+// About the app text widget for about the app screen
+
 import 'package:flutter/material.dart';
 
 Widget aboutTheAppText_widget() {

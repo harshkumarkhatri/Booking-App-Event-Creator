@@ -78,8 +78,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 bool emailValid = RegExp(
                                         r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
                                     .hasMatch(value);
-                                print(value);
-                                print(emailValid);
                                 if (value.isEmpty ||
                                     value.length < 4 ||
                                     !emailValid) {
@@ -114,8 +112,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 });
                               },
                               validator: (value) {
-                                print("Value is $value");
-
                                 if (value.isEmpty || value.length < 6) {
                                   return 'Password should 6 characters or long';
                                 }
@@ -148,7 +144,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 });
                               },
                               validator: (value) {
-                                print(pass);
                                 if (value.isEmpty || value.length < 6) {
                                   return 'Password should 6 characters or long';
                                 } else if (confPass != pass) {

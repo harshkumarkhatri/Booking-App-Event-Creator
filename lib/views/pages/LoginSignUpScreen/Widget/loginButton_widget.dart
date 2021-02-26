@@ -12,7 +12,6 @@ Widget loginButton(context) {
       child: Container(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        // color: Colors.yellow,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(

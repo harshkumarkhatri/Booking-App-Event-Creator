@@ -10,9 +10,6 @@ Widget overAllStateTile() {
         fontWeight: FontWeight.w600,
       ),
     ),
-    onTap: () {
-      // Update the state of the app.
-      // ...
-    },
+    onTap: () {},
   );
 }

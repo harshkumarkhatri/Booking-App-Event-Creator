@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 Widget emailText_widget(User user) {
   return Container(
-    // height: 55,
     padding: EdgeInsets.only(
       top: 15,
       bottom: 15,

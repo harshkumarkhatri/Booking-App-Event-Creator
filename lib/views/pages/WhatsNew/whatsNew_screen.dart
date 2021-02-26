@@ -15,10 +15,7 @@ class _WhatsNewScreenState extends State<WhatsNewScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // print(fetchAlbum());
-    print("Inside init");
     futureAlbum = fetchAlbum();
   }
 

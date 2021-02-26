@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_booking_app_event_creator/views/pages/ActiveEvents/EventDetails_screen/eventDetails_screen.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/ActiveEvents/Widgets/activeListItem_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/ActiveEvents/Widgets/noActiveOrCancelledItem_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/ActiveEvents/Widgets/noEventsExists.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get/get.dart';
 
 class ActiveEventsScreen extends StatefulWidget {
   @override
@@ -21,7 +19,6 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initialzingDemo();
   }
@@ -34,8 +31,6 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
     final demo =
         await Firestore.instance.collection("eventList").document(email).get();
 
-    print("Demothing");
-    // print(demoThing.data().keys);
     field = FieldPath.fromString(email);
     setState(() {
       itemLength = demo.data().keys.length;
@@ -48,7 +43,6 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
         users.document(email).set({});
       } else {
         for (int i = 1; i <= demoThing.data().keys.length; i++) {
-          print(i);
           if (demoThing.data()['${i}_${field.hashCode}']["eventStatus"] ==
               "active") {
             setState(() {
@@ -100,7 +94,6 @@ class _ActiveEventsScreenState extends State<ActiveEventsScreen> {
                           "active")
                         return activeListItem_widget(demoThing, index, field);
                       else {
-                        // This will display a empty container the condition fails to succeed
                         return Container();
                       }
                     },
