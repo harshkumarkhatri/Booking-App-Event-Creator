@@ -9,7 +9,7 @@ Widget itemTextEventDetails_widget(String item, String contactEmail) {
           maxLines: 9,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 18,
+            fontSize: 18.0,
             fontWeight: FontWeight.w500,
           ),
           overflow: TextOverflow.ellipsis,
@@ -24,7 +24,7 @@ Widget itemTextEventDetails_widget(String item, String contactEmail) {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 18.0,
               fontWeight: FontWeight.w500,
             ),
           ),

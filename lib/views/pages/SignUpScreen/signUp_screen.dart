@@ -21,7 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         color: Colors.orange,
         child: SafeArea(
           child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Stack(
                 children: [
                   Container(
@@ -45,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 1.6,
-                                  fontSize: 40,
+                                  fontSize: 40.0,
                                 ),
                               ),
                             ),
@@ -67,7 +67,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 labelText: "Email",
                                 labelStyle: TextStyle(color: Colors.black),
                                 errorStyle: TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                ),
                               ),
                               onChanged: (value) {
                                 setState(() {
@@ -104,7 +106,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 labelText: "Password",
                                 labelStyle: TextStyle(color: Colors.black),
                                 errorStyle: TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                ),
                               ),
                               onChanged: (value) {
                                 setState(() {
@@ -136,7 +140,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 labelText: "Confirm Password",
                                 labelStyle: TextStyle(color: Colors.black),
                                 errorStyle: TextStyle(
-                                    color: Colors.black, fontSize: 16),
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                ),
                               ),
                               onChanged: (value) {
                                 setState(() {

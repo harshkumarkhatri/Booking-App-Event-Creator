@@ -13,7 +13,9 @@ Widget locationAndEdit_widget(dynamic snapshot, int index, String email) {
         Icon(Icons.location_on, color: Colors.orange),
         Flexible(
           child: Container(
-            padding: EdgeInsets.only(left: 8),
+            padding: EdgeInsets.only(
+              left: 8.0,
+            ),
             child: Text(
               snapshot.data['${index + 1}_${field.hashCode}']['eventCity']
                       .toString() +

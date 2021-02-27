@@ -36,7 +36,7 @@ class _AboutTheUserState extends State<AboutTheUser> {
           color: Colors.orange,
         ),
         backgroundColor: Colors.black.withOpacity(0.9),
-        elevation: 0,
+        elevation: 0.0,
         title: Text(
           "About the User",
           style: TextStyle(
@@ -52,12 +52,16 @@ class _AboutTheUserState extends State<AboutTheUser> {
           color: Colors.orange,
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15.0, top: 25),
+          padding: const EdgeInsets.only(
+            left: 15.0,
+            right: 15.0,
+            top: 25.0,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               emailText_widget(user),
-              SizedBox(height: 25),
+              SizedBox(height: 25.0),
               nameText_widget(user),
               editYourUserNameText_widget(),
             ],

@@ -10,7 +10,7 @@ Widget logout_widget(IconData icon, String text) {
     },
     child: Container(
       alignment: Alignment.centerLeft,
-      height: 45,
+      height: 45.0,
       child: Row(
         children: [
           Padding(
@@ -20,7 +20,7 @@ Widget logout_widget(IconData icon, String text) {
           Text(
             text,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 18.0,
               fontWeight: FontWeight.w600,
             ),
           ),

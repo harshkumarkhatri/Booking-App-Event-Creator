@@ -8,7 +8,7 @@ Widget overwrittenText_widget() {
         "At a time you can only have one contact request.\nMaking a new contact request will overwrite your current request.",
         style: TextStyle(
           color: Colors.black,
-          fontSize: 16,
+          fontSize: 16.0,
           fontWeight: FontWeight.w500,
         ),
         textAlign: TextAlign.center,

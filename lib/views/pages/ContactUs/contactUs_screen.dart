@@ -39,7 +39,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
           child: Form(
             key: _formKey,
             child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Column(
                 children: [
                   TextFormField(

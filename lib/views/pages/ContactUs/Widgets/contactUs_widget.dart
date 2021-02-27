@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Widget contactUs_widget(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
-    height: 55,
+    height: 55.0,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
       gradient: LinearGradient(
@@ -20,7 +20,7 @@ Widget contactUs_widget(BuildContext context) {
       child: Text(
         "Submit",
         style: TextStyle(
-          fontSize: 32,
+          fontSize: 32.0,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.6,
           color: Colors.orange.withOpacity(0.6),

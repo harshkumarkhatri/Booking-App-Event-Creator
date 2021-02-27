@@ -12,7 +12,7 @@ Widget answerText_widget(String text) {
         text,
         style: TextStyle(
           color: Colors.orange,
-          fontSize: 16,
+          fontSize: 16.0,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.6,
           height: 1.1,

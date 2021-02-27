@@ -11,15 +11,15 @@ Widget addEventButton() {
     textColor: Colors.orange,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(
-        14,
+        14.0,
       ),
     ),
-    elevation: 12,
+    elevation: 12.0,
     child: Container(
       child: Text(
         "Add event".toUpperCase(),
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 16.0,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.5,
         ),

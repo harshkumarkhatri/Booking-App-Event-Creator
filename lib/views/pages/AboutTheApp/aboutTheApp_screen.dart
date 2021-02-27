@@ -35,9 +35,9 @@ class _AboutTheAppScreenState extends State<AboutTheAppScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 16,
+              left: 16.0,
               right: 15.0,
-              top: 15,
+              top: 15.0,
             ),
             child: SingleChildScrollView(
               child: Column(

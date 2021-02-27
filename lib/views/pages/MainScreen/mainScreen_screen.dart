@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +20,6 @@ import 'package:flutter_booking_app_event_creator/views/pages/MainScreen/Widgets
 import 'package:flutter_booking_app_event_creator/views/pages/SettingsScreen/settingScreen_screen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -179,14 +176,17 @@ class _MainScreenState extends State<MainScreen> {
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.only(
-                                  left: 15, right: 15.0, top: 4, bottom: 4),
+                                  left: 15.0,
+                                  right: 15.0,
+                                  top: 4.0,
+                                  bottom: 4.0),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.black.withOpacity(
                                     0.9,
                                   ),
                                   borderRadius: BorderRadius.circular(
-                                    14,
+                                    14.0,
                                   ),
                                 ),
                                 child: Padding(

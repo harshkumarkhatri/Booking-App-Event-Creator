@@ -53,7 +53,10 @@ class _WhatsNewScreenState extends State<WhatsNewScreen> {
                 color: Colors.orange,
               ),
               child: ListView.builder(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  padding: const EdgeInsets.only(
+                    left: 15.0,
+                    right: 15.0,
+                  ),
                   itemCount: json.keys.length,
                   itemBuilder: (BuildContext context, int index) {
                     return whatsNewItem_widget(json, index);

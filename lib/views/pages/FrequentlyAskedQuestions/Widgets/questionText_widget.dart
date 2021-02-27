@@ -8,7 +8,7 @@ Widget questionText_widget(String text) {
     alignment: Alignment.centerLeft,
     child: Padding(
       padding: EdgeInsets.all(
-        8,
+        8.0,
       ),
       child: Row(
         children: [
@@ -16,7 +16,7 @@ Widget questionText_widget(String text) {
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.0,
                 color: Colors.orange,
               ),
             ),

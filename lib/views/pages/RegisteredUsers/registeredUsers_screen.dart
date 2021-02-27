@@ -52,7 +52,7 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
                           "No user has registered for this particular event.",
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 20,
+                              fontSize: 20.0,
                               fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
                         ),
@@ -62,18 +62,24 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(
-                              left: 15, right: 15.0, top: 4, bottom: 4),
+                            left: 15,
+                            right: 15.0,
+                            top: 4.0,
+                            bottom: 4.0,
+                          ),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(
                                 0.9,
                               ),
                               borderRadius: BorderRadius.circular(
-                                14,
+                                14.0,
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(
+                                8.0,
+                              ),
                               child: Column(
                                 children: [
                                   Text(
@@ -83,12 +89,14 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
                                     style: TextStyle(
                                       color: Colors.orange,
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 20,
+                                      fontSize: 20.0,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 8, right: 8.0),
+                                      left: 8.0,
+                                      right: 8.0,
+                                    ),
                                     child: Row(
                                       children: [
                                         Padding(
@@ -113,7 +121,7 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
                                           style: TextStyle(
                                             color: Colors.orange,
                                             fontWeight: FontWeight.w700,
-                                            fontSize: 16,
+                                            fontSize: 16.0,
                                           ),
                                         ),
                                       ],

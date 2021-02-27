@@ -7,12 +7,16 @@ Widget helpAndSupport_body_widget(BuildContext context) {
     width: MediaQuery.of(context).size.width,
     decoration: BoxDecoration(color: Colors.orange),
     child: Padding(
-      padding: const EdgeInsets.only(left: 15, right: 15.0, top: 15),
+      padding: const EdgeInsets.only(
+        left: 15.0,
+        right: 15.0,
+        top: 15.0,
+      ),
       child: Column(
         children: [
           Container(
-            height: 256,
-            width: 256,
+            height: 256.0,
+            width: 256.0,
             decoration: BoxDecoration(shape: BoxShape.circle),
             child: Image.network(
                 "https://res.cloudinary.com/harshkumarkhatri/image/upload/v1611391578/Support-512_suwagi.png"),
@@ -21,7 +25,7 @@ Widget helpAndSupport_body_widget(BuildContext context) {
             "Want some help or support for your personal event?",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 18.0,
               fontWeight: FontWeight.w500,
               letterSpacing: 1.4,
               height: 1.3,
@@ -42,7 +46,7 @@ Widget helpAndSupport_body_widget(BuildContext context) {
                       text: "Write us at",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 18,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 1.4,
                         height: 1.3,
@@ -52,7 +56,7 @@ Widget helpAndSupport_body_widget(BuildContext context) {
                         text: " mailharshkhatri@gmail.com",
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 18.0,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 1.4,
                           height: 1.3,

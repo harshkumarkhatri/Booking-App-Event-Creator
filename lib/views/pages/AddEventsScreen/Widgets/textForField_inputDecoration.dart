@@ -17,6 +17,6 @@ InputDecoration textFormField_inputDecoration(
     labelText: labelText,
     labelStyle: TextStyle(color: Colors.black),
     helperText: helperText,
-    errorStyle: TextStyle(color: Colors.black, fontSize: 16),
+    errorStyle: TextStyle(color: Colors.black, fontSize: 16.0),
   );
 }

@@ -37,9 +37,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 15,
+              left: 15.0,
               right: 15.0,
-              top: 8,
+              top: 8.0,
             ),
             child: Column(
               children: [

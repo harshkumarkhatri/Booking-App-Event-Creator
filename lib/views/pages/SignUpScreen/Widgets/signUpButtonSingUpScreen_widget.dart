@@ -23,9 +23,11 @@ Widget signUpButtonSignUpScreen(BuildContext context,
       padding: const EdgeInsets.only(bottom: 25.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 55,
+        height: 55.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(
+            12.0,
+          ),
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
@@ -40,7 +42,7 @@ Widget signUpButtonSignUpScreen(BuildContext context,
           child: Text(
             "Sign Up",
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 32.0,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.6,
               color: Colors.orange,

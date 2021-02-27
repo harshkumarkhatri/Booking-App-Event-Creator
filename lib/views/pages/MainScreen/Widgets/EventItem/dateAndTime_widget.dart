@@ -9,25 +9,29 @@ Widget dateAndTime_widget(dynamic snapshot, int index, String email) {
       children: [
         Icon(Icons.calendar_today, color: Colors.orange),
         Container(
-          padding: EdgeInsets.only(left: 8),
+          padding: EdgeInsets.only(
+            left: 8.0,
+          ),
           child: Text(
             snapshot.data["${index + 1}_${field.hashCode}"]['date'].toString(),
             style: TextStyle(
               color: Colors.orange,
               fontWeight: FontWeight.w600,
-              fontSize: 14,
+              fontSize: 14.0,
             ),
           ),
         ),
         Spacer(),
         Container(
-          padding: EdgeInsets.only(right: 8),
+          padding: EdgeInsets.only(
+            right: 8.0,
+          ),
           child: Text(
             snapshot.data["${index + 1}_${field.hashCode}"]['time'].toString(),
             style: TextStyle(
               color: Colors.orange,
               fontWeight: FontWeight.w600,
-              fontSize: 14,
+              fontSize: 14.0,
             ),
           ),
         ),

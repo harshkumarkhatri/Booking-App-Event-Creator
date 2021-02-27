@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.black,
         child: SafeArea(
           child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Stack(
                 children: [
                   Container(
@@ -35,7 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 58),
+                            padding: const EdgeInsets.only(
+                              bottom: 58.0,
+                            ),
                             child: Container(
                               width: MediaQuery.of(context).size.width,
                               alignment: Alignment.topCenter,
@@ -45,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Colors.orange,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 1.6,
-                                  fontSize: 40,
+                                  fontSize: 40.0,
                                 ),
                               ),
                             ),
@@ -67,7 +69,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 labelText: "Email",
                                 labelStyle: TextStyle(color: Colors.orange),
                                 errorStyle: TextStyle(
-                                    color: Colors.orange, fontSize: 16),
+                                  color: Colors.orange,
+                                  fontSize: 16.0,
+                                ),
                               ),
                               onChanged: (value) {
                                 setState(() {
@@ -104,7 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 labelText: "Password",
                                 labelStyle: TextStyle(color: Colors.orange),
                                 errorStyle: TextStyle(
-                                    color: Colors.orange, fontSize: 16),
+                                  color: Colors.orange,
+                                  fontSize: 16.0,
+                                ),
                               ),
                               onChanged: (value) {
                                 setState(() {

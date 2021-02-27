@@ -5,19 +5,19 @@ Widget editButton_widget(BuildContext context) {
     padding: const EdgeInsets.only(top: 15.0),
     child: Container(
       alignment: Alignment.center,
-      height: 45,
+      height: 45.0,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.circular(
-          14,
+          14.0,
         ),
       ),
       child: Text(
         "Edit",
         style: TextStyle(
           color: Colors.orange,
-          fontSize: 18,
+          fontSize: 18.0,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.3,
         ),

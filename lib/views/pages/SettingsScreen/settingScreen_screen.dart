@@ -41,7 +41,10 @@ class _SettingScreenState extends State<SettingScreen> {
           color: Colors.orange,
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
+          padding: const EdgeInsets.only(
+            left: 15.0,
+            right: 15.0,
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [

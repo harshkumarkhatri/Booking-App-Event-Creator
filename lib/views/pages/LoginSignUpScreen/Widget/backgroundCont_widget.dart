@@ -9,10 +9,10 @@ Widget backgroundContainers(context) {
         Container(
           alignment: Alignment.bottomCenter,
           color: Colors.orange,
-          height: 225,
+          height: 225.0,
           child: Container(
-            height: 65,
-            width: 65,
+            height: 65.0,
+            width: 65.0,
           ),
         ),
         Expanded(

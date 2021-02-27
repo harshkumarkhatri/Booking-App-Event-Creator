@@ -13,8 +13,8 @@ Widget imageCircle(context) {
             Padding(
               padding: const EdgeInsets.only(top: 170.0),
               child: Container(
-                height: 110,
-                width: 110,
+                height: 110.0,
+                width: 110.0,
                 decoration: BoxDecoration(
                   color: Colors.orange,
                   shape: BoxShape.circle,
@@ -33,7 +33,7 @@ Widget imageCircle(context) {
             Padding(
               padding: const EdgeInsets.only(top: 170.0),
               child: MyArc(
-                diameter: 114,
+                diameter: 114.0,
               ),
             ),
           ],

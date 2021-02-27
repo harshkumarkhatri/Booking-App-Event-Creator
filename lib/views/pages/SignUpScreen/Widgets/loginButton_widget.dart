@@ -8,11 +8,11 @@ Widget loginButtonSignUpScreen() {
       Get.off(LoginScreen());
     },
     child: Padding(
-      padding: const EdgeInsets.only(bottom: 58.0, top: 25),
+      padding: const EdgeInsets.only(bottom: 58.0, top: 25.0),
       child: Container(
         height: 55,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.0),
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
@@ -27,7 +27,7 @@ Widget loginButtonSignUpScreen() {
           child: Text(
             "Login",
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 32.0,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.6,
               color: Colors.orange,

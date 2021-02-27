@@ -10,7 +10,7 @@ Widget loginButton(context) {
     child: Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Container(
-        height: 60,
+        height: 60.0,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -29,7 +29,7 @@ Widget loginButton(context) {
             "Login",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 24,
+              fontSize: 24.0,
               fontWeight: FontWeight.w600,
               letterSpacing: 1.2,
             ),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_booking_app_event_creator/repositories/numericCheck.dart';
 import 'package:flutter_booking_app_event_creator/responses/updateEventDataToFireStore.dart';
 import 'package:flutter_booking_app_event_creator/utils/constants.dart';
+import 'package:flutter_booking_app_event_creator/utils/impData.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Widgets/chooseText_widget.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/AddEventsScreen/Widgets/textForField_inputDecoration.dart';
 import 'package:flutter_booking_app_event_creator/views/pages/EditEvent/Widgets/itemText_widget.dart';
@@ -137,7 +138,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
             child: Form(
               key: _formKey,
               child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: userData == null
                     ? Center(child: CircularProgressIndicator())
                     : isEditable == false
@@ -146,7 +147,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                               "Sorry this event is not editable as it has either expired or cancelled or occuring in next 6 days.",
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 18,
+                                fontSize: 18.0,
                                 fontWeight: FontWeight.w600,
                               ),
                               textAlign: TextAlign.center,
@@ -267,11 +268,11 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       value: dropdownValue,
                                       icon: Icon(Icons.arrow_downward,
                                           color: Colors.black),
-                                      iconSize: 24,
+                                      iconSize: 24.0,
                                       elevation: 16,
                                       style: TextStyle(color: Colors.black),
                                       underline: Container(
-                                        height: 2,
+                                        height: 2.0,
                                         color: Colors.black,
                                       ),
                                       onChanged: (String newValue) {
@@ -325,11 +326,11 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       value: dropdownValue2,
                                       icon: Icon(Icons.arrow_downward,
                                           color: Colors.black),
-                                      iconSize: 24,
+                                      iconSize: 24.0,
                                       elevation: 16,
                                       style: TextStyle(color: Colors.black),
                                       underline: Container(
-                                        height: 2,
+                                        height: 2.0,
                                         color: Colors.black,
                                       ),
                                       onChanged: (String newValue) {
@@ -352,7 +353,9 @@ class _EditEventScreenState extends State<EditEventScreen> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 12.0, bottom: 12),
+                                  top: 12.0,
+                                  bottom: 12.0,
+                                ),
                                 child: TextFormField(
                                   keyboardType: TextInputType.number,
                                   initialValue: userData['expectedAudience'],
@@ -394,7 +397,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                           date,
                                           style: TextStyle(
                                             color: Colors.black,
-                                            fontSize: 16,
+                                            fontSize: 16.0,
                                           ),
                                         ),
                                         Icon(Icons.calendar_today_outlined,
@@ -407,7 +410,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                               itemText("Time"),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  bottom: 12,
+                                  bottom: 12.0,
                                 ),
                                 child: GestureDetector(
                                   behavior: HitTestBehavior.opaque,
@@ -424,11 +427,13 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                           time,
                                           style: TextStyle(
                                             color: Colors.black,
-                                            fontSize: 16,
+                                            fontSize: 16.0,
                                           ),
                                         ),
-                                        Icon(Icons.watch_later,
-                                            color: Colors.black),
+                                        Icon(
+                                          Icons.watch_later,
+                                          color: Colors.black,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -468,14 +473,16 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                 child: Text(
                                   "You won't be able to edit the event once it is cancelled",
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 16.0, bottom: 25),
+                                  top: 16.0,
+                                  bottom: 25.0,
+                                ),
                                 child: GestureDetector(
                                   onTap: () {
                                     print("event status $eventStatus");
@@ -501,7 +508,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                           .then((value) => print(value.body));
                                     } else {
                                       String api_link =
-                                          "https://a6qwebn0gk.execute-api.ap-south-1.amazonaws.com/1/sendUpdateAboutEventUpdated/posting";
+                                          impData().sendUpdateAboutEventUpdated;
                                       print(registeredUsers);
                                       for (int i = 0;
                                           i < registeredUsers.length;
@@ -549,7 +556,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                   },
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: 55,
+                                    height: 55.0,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       gradient: LinearGradient(
@@ -566,7 +573,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       child: Text(
                                         "Submit",
                                         style: TextStyle(
-                                          fontSize: 32,
+                                          fontSize: 32.0,
                                           fontWeight: FontWeight.w700,
                                           letterSpacing: 1.6,
                                           color: Colors.orange.withOpacity(0.6),

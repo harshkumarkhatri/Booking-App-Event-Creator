@@ -58,13 +58,20 @@ class _EditNameScreenState extends State<EditNameScreen> {
       body: Container(
         color: Colors.orange,
         child: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15.0, top: 15),
+          padding: const EdgeInsets.only(
+            left: 15.0,
+            right: 15.0,
+            top: 15.0,
+          ),
           child: Column(
             children: [
               userNameText_widget(userName),
               isActive
                   ? Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+                      padding: const EdgeInsets.only(
+                        top: 8.0,
+                        bottom: 8.0,
+                      ),
                       child: Theme(
                         data: Theme.of(context).copyWith(
                           primaryColor: Colors.black,
@@ -86,7 +93,7 @@ class _EditNameScreenState extends State<EditNameScreen> {
                   ? Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Container(
-                        height: 45,
+                        height: 45.0,
                         child: RaisedButton(
                           onPressed: () {
                             changeUserDisplayName(userName);
@@ -100,7 +107,7 @@ class _EditNameScreenState extends State<EditNameScreen> {
                           child: Text(
                             "Save New Name",
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.0,
                               fontWeight: FontWeight.w500,
                               color: Colors.orange,
                             ),

@@ -5,7 +5,7 @@ Widget chooseText(String text) {
     padding: const EdgeInsets.only(top: 12.0),
     child: Container(
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.only(top: 6),
+      padding: EdgeInsets.only(top: 6.0),
       child: Text(
         text,
         style: TextStyle(

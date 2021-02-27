@@ -18,7 +18,7 @@ Widget detailsText_widget(dynamic snapshot, int index, String email) {
           style: TextStyle(
             color: Colors.orange,
             fontWeight: FontWeight.w700,
-            fontSize: 20,
+            fontSize: 20.0,
           ),
         ),
       ),

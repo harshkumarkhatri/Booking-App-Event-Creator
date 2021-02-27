@@ -9,7 +9,7 @@ Widget demoWidget(IconData icon, String text, Widget page) {
     },
     child: Container(
       alignment: Alignment.centerLeft,
-      height: 45,
+      height: 45.0,
       child: Row(
         children: [
           Padding(
@@ -19,7 +19,7 @@ Widget demoWidget(IconData icon, String text, Widget page) {
           Text(
             text,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 18.0,
               fontWeight: FontWeight.w600,
             ),
           ),

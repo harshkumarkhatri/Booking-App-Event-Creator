@@ -32,14 +32,14 @@ class _NoInternetConnectionScreenState
             Icon(
               Icons.wifi,
               color: Colors.black,
-              size: 80,
+              size: 80.0,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 18.0),
               child: Text(
                 "No Connection",
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 28.0,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -52,7 +52,7 @@ class _NoInternetConnectionScreenState
                     text: "Check your ",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -60,7 +60,7 @@ class _NoInternetConnectionScreenState
                     text: "Wifi ",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -68,7 +68,7 @@ class _NoInternetConnectionScreenState
                     text: "or ",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -76,7 +76,7 @@ class _NoInternetConnectionScreenState
                     text: "Mobile ",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -84,7 +84,7 @@ class _NoInternetConnectionScreenState
                     text: "connection.",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

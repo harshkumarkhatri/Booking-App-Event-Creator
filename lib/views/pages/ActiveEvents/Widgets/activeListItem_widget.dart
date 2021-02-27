@@ -16,9 +16,9 @@ Widget activeListItem_widget(
     child: Padding(
       padding: const EdgeInsets.only(
         top: 8.0,
-        bottom: 8,
-        left: 15,
-        right: 15,
+        bottom: 8.0,
+        left: 15.0,
+        right: 15.0,
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -31,14 +31,18 @@ Widget activeListItem_widget(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 16.0, top: 6, bottom: 2),
+              padding: const EdgeInsets.only(
+                left: 16.0,
+                top: 6.0,
+                bottom: 2.0,
+              ),
               child: Container(
                 child: Text(
                   demoThing.data()["${index + 1}_${field.hashCode}"]
                       ["eventName"],
                   style: TextStyle(
                     color: Colors.orange,
-                    fontSize: 22,
+                    fontSize: 22.0,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -47,9 +51,9 @@ Widget activeListItem_widget(
             Padding(
               padding: const EdgeInsets.only(
                 left: 12.0,
-                top: 2,
-                bottom: 6,
-                right: 12,
+                top: 2.0,
+                bottom: 6.0,
+                right: 12.0,
               ),
               child: Row(
                 children: [
@@ -65,7 +69,7 @@ Widget activeListItem_widget(
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.orange,
-                        fontSize: 16,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -77,7 +81,7 @@ Widget activeListItem_widget(
                           ["date"],
                       style: TextStyle(
                         color: Colors.orange,
-                        fontSize: 16,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.w500,
                       ),
                       maxLines: 9,

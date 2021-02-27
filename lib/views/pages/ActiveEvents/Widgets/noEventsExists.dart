@@ -10,7 +10,7 @@ Widget noEventsExists(BuildContext context, String text) {
       text,
       style: TextStyle(
         color: Colors.black,
-        fontSize: 18,
+        fontSize: 18.0,
         fontWeight: FontWeight.w600,
       ),
     ),

@@ -6,7 +6,7 @@ Widget itemText(String text) {
     child: Text(
       text,
       style: TextStyle(
-        fontSize: 18,
+        fontSize: 18.0,
         fontWeight: FontWeight.w500,
       ),
     ),

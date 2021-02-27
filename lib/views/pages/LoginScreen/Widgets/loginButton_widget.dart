@@ -25,7 +25,7 @@ Widget loginButtonLoginScreen(BuildContext context,
       padding: const EdgeInsets.only(bottom: 25.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 55,
+        height: 55.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
@@ -42,7 +42,7 @@ Widget loginButtonLoginScreen(BuildContext context,
           child: Text(
             "Login",
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 32.0,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.6,
               color: Colors.black,

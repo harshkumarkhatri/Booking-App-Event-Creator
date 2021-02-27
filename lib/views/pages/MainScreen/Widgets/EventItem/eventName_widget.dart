@@ -9,7 +9,7 @@ Widget eventName_widget(dynamic snapshot, int index, String email) {
       snapshot.data["${index + 1}_${field.hashCode}"]['eventName'].toString(),
       style: TextStyle(
         color: Colors.orange,
-        fontSize: 18,
+        fontSize: 18.0,
         fontWeight: FontWeight.w700,
       ),
     ),

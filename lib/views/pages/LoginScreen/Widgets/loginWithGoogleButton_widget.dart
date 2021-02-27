@@ -18,7 +18,9 @@ Widget loginWithGoogleButton() {
       child: Container(
         height: 55,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(
+            12.0,
+          ),
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
@@ -33,7 +35,7 @@ Widget loginWithGoogleButton() {
           child: Text(
             "Login with Google",
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 32.0,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.6,
               color: Colors.black,

@@ -80,7 +80,7 @@ class _AddEventsState extends State<AddEvents> {
           child: Form(
             key: _formKey,
             child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Column(
                 children: [
                   TextFormField(
@@ -134,7 +134,7 @@ class _AddEventsState extends State<AddEvents> {
                             child: Text(
                               contactEmail,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.0,
                               ),
                             ),
                           ),
@@ -229,11 +229,11 @@ class _AddEventsState extends State<AddEvents> {
                           focusColor: Colors.red,
                           value: dropdownValue,
                           icon: Icon(Icons.arrow_downward, color: Colors.black),
-                          iconSize: 24,
+                          iconSize: 24.0,
                           elevation: 16,
                           style: TextStyle(color: Colors.black),
                           underline: Container(
-                            height: 2,
+                            height: 2.0,
                             color: Colors.black,
                           ),
                           onChanged: (String newValue) {
@@ -284,11 +284,11 @@ class _AddEventsState extends State<AddEvents> {
                           focusColor: Colors.black,
                           value: dropdownValue2,
                           icon: Icon(Icons.arrow_downward, color: Colors.black),
-                          iconSize: 24,
+                          iconSize: 24.0,
                           elevation: 16,
                           style: TextStyle(color: Colors.black),
                           underline: Container(
-                            height: 2,
+                            height: 2.0,
                             color: Colors.black,
                           ),
                           onChanged: (String newValue) {
@@ -374,7 +374,7 @@ class _AddEventsState extends State<AddEvents> {
                               date,
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize: 16.0,
                               ),
                             ),
                             Icon(Icons.calendar_today_outlined,
@@ -403,7 +403,7 @@ class _AddEventsState extends State<AddEvents> {
                               time,
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize: 16.0,
                               ),
                             ),
                             Icon(Icons.watch_later, color: Colors.black),
@@ -448,7 +448,7 @@ class _AddEventsState extends State<AddEvents> {
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 55,
+                        height: 55.0,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           gradient: LinearGradient(

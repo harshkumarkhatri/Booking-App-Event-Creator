@@ -8,9 +8,12 @@ Widget signUpButton() {
       Get.off(SignUpScreen());
     },
     child: Padding(
-      padding: const EdgeInsets.only(bottom: 58.0, top: 25),
+      padding: const EdgeInsets.only(
+        bottom: 58.0,
+        top: 25.0,
+      ),
       child: Container(
-        height: 55,
+        height: 55.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
@@ -27,7 +30,7 @@ Widget signUpButton() {
           child: Text(
             "Sign Up",
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 32.0,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.6,
               color: Colors.black,

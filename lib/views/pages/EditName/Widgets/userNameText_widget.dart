@@ -5,7 +5,7 @@ Widget userNameText_widget(String userName) {
     child: Text(
       userName,
       style: TextStyle(
-        fontSize: 24,
+        fontSize: 24.0,
         fontWeight: FontWeight.w600,
       ),
     ),

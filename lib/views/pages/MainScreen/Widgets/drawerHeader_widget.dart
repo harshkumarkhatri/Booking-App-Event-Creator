@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget drawerHeader(String email) {
   return Container(
-    height: 80,
+    height: 80.0,
     child: DrawerHeader(
       child: Container(
         child: Column(
@@ -14,7 +14,7 @@ Widget drawerHeader(String email) {
                 email,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
+                  fontSize: 16.0,
                   fontWeight: FontWeight.w600,
                 ),
                 overflow: TextOverflow.fade,
