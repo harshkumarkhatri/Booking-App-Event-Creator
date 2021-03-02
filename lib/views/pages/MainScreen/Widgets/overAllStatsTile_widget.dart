@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_booking_app_event_creator/views/pages/OverallStats/overallStats_screen.dart';
+import 'package:get/get.dart';
 
 Widget overAllStateTile() {
   return ListTile(
@@ -10,6 +12,8 @@ Widget overAllStateTile() {
         fontWeight: FontWeight.w600,
       ),
     ),
-    onTap: () {},
+    onTap: () {
+      Get.to(OverallStats());
+    },
   );
 }
