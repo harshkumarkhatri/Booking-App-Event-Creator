@@ -55,6 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 25.0),
                             child: TextFormField(
+                              cursorColor: Colors.orange,
                               style: TextStyle(color: Colors.orange),
                               decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
@@ -94,7 +95,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 25.0),
                             child: TextFormField(
+                              cursorColor: Colors.orange,
                               obscureText: true,
+                              style: TextStyle(color: Colors.orange),
                               decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.orange),
