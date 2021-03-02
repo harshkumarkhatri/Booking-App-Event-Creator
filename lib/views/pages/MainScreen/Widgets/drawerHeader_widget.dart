@@ -11,7 +11,7 @@ Widget drawerHeader(String email) {
           children: [
             Flexible(
               child: Text(
-                email,
+                email ?? "Email",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
