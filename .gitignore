@@ -39,3 +39,12 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# Google services file for ios
+ios/Runner/GoogleService-Info.plist
+
+# Google services file for android
+android/app/google-services.json
+
+# FCM key and API urls's
+lib/utils/impData.dart
