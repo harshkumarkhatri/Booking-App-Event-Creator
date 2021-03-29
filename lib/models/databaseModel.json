@@ -1,0 +1,29 @@
+
+
+{
+    "_comment":"Demo Database model for how the database should look like",
+    "uid":{
+        "1":{
+            "contactEmail":"",
+            "date":"",
+            "eventCity":"",
+            "eventState":"",
+            "eventType":"",
+            "expectedAudience":"",
+            "fullUserName":"",
+            "phoneNumber":"",
+            "eventStatus":""
+        },
+        "2":{
+            "contactEmail":"",
+            "date":"",
+            "eventCity":"",
+            "eventState":"",
+            "eventType":"",
+            "expectedAudience":"",
+            "fullUserName":"",
+            "phoneNumber":"",
+            "eventStatus":""
+        }
+    }
+}
