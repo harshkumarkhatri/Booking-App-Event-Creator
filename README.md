@@ -14,7 +14,7 @@ Eventizer is an app to help you create and manage events on the go without any h
 ## Technology Stack 🏁
 
 - [Flutter](https://flutter.dev/)
-- [Firebase](https://pub.dev/packages/sqflite)
+- [Firebase](https://firebase.google.com/)
 - [Flutter Secure Storage](https://pub.dev/packages/flutter_secure_storage)
 - [Getx](https://pub.dev/packages/get)
 - [AWS](https://aws.amazon.com/)
