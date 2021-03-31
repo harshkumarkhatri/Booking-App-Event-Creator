@@ -1,16 +1,68 @@
-# flutter_booking_app_event_creator
+# Evntizer-Event Creators Section
 
-A new Flutter project.
+[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-reason.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Introduction 📌
 
-A few resources to get you started if this is your first Flutter project:
+Eventizer is an app to help you create and manage events on the go without any hassle.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Technology Stack 🏁
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter](https://flutter.dev/)
+- [Firebase](https://pub.dev/packages/sqflite)
+- [Flutter Secure Storage]()
+- [Getx]()
+- [AWS]()
+- [HTTP]()
+- [Intl]()
+- [URL Launcher]()
+- [Share]()
+- [Connectivity]()
+
+## Why this Project? 🏃‍♂️
+
+A lot of things go in organizing a successful event and being a community person, i know that.
+
+To handle the problem of the people who are not that good at organizing an event, i have created Eventizer which will help them get their event up and running with a few click along with providing them with a better reach for their events.
+
+This app is the **event creator** section for Eventizer and through this app/section the communities or folks from the communities can create their event and see the mails of the people who have registered for their events. 
+
+Every time a user is registering, he will be be getting a mail for the same with all the details related to the event.
+
+Sometimes, there are unfortunate conditions due to which an event needs to be updated or cancelled. The also allows you to do that. 
+
+Every participant will get a mail when you update or cancel you event which keeps the attendees updated as well with the event schedule.
+
+## Project Walkthrough
+ - API-All files related to API loading
+ - Bloc-Bloc pattern implemented here
+ - Models-Demo models related to data being stored in database
+ - Repositories-Functions related to firebase
+ - Responses-Some more functions
+ - Utilities
+ - View
+    - Auth-Authentication part
+    - Pages-All the screen/pages within the app
+    - Partials
+
+## 👀 Build Instructions 
+
+- Clone the Repository: `git clone https://github.com/harshkumarkhatri/Booking-App-Event-Creator`
+- `cd` into the Repository: `cd Booking-App-Event-Creator`
+- Enable stable channel:
+```
+$ flutter channel beta
+```
+- Check for the Devices configured for Flutter Web: `flutter devices`
+- Run the App in Release Mode: `flutter run`
+- Generate a Build: `flutter build apk --split-per-abi`
+
+
+## Contributors ✨
+
+- [Harsh Kumar Khatri](https://github.com/harshkumarkhatri)
