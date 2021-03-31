@@ -15,14 +15,14 @@ Eventizer is an app to help you create and manage events on the go without any h
 
 - [Flutter](https://flutter.dev/)
 - [Firebase](https://pub.dev/packages/sqflite)
-- [Flutter Secure Storage]()
-- [Getx]()
-- [AWS]()
-- [HTTP]()
-- [Intl]()
-- [URL Launcher]()
-- [Share]()
-- [Connectivity]()
+- [Flutter Secure Storage](https://pub.dev/packages/flutter_secure_storage)
+- [Getx](https://pub.dev/packages/get)
+- [AWS](https://aws.amazon.com/)
+- [HTTP](https://pub.dev/packages/http)
+- [Intl](https://pub.dev/packages/intl)
+- [URL Launcher](https://pub.dev/packages/url_launcher)
+- [Share](https://pub.dev/packages/share)
+- [Connectivity](https://pub.dev/packages/connectivity)
 
 ## Why this Project? 🏃‍♂️
 
